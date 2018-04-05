@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KTV-System.iml" filepath="$PROJECT_DIR$/KTV-System.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSM-KTV-SYSTEM.iml" filepath="$PROJECT_DIR$/SSM-KTV-SYSTEM.iml" />
     </modules>
   </component>
 </project>
