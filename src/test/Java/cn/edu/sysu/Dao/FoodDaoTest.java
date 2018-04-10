@@ -33,7 +33,7 @@ public class FoodDaoTest {
 
     @Test
     public void increaseStock() {
-        assert (foodDao.increaseStock("炸鸡",5) == 1);
+        assert (foodDao.increaseStock("炸鸡", 5) == 1);
     }
 
     @Test

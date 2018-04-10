@@ -4,9 +4,9 @@ package cn.edu.sysu.Entity;
  * Project name: KTV-System
  * Package name: cn.edu.sysu.Entity
  * Created by lihan on 2018/4/6
- * Description: Food的实体类，Food包含fname，price，
- *              stock等信息，提供对应的get、set方法以
- *              及toString方法。
+ * Description: Food的实体类，Food包含fname，
+ * price，stock等信息，提供对应的get()、set()
+ * 方法以及toString方法。
  */
 public class Food {
 
