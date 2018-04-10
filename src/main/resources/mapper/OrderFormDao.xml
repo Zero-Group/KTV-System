@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "cn.edu.sysu.Dao.OrderFormDao">
+
+    <insert id="addOrderForm" parameterType = "OrderForm">
+        INSERT
+        INTO tb_orderform
+        (vipphone,Price,orderTime,pay,detail,room)
+        VALUES (#{vipphone},#{Price}, #{orderTime},#{pay},#{detail},#{room})
+    </insert>
+
+    <insert id="deleteOrderForm" >
+        DELETE
+        FROM tb_orderform
+        WHERE orderTime=#{orderTime} AND room=#{room};
+    </insert>
+
+    <select id="queryOrderFormByVIP" resultType="OrderForm" parameterType="String">
+        SELECT *
+        FROM tb_orderform
+        WHERE vipphone=#{vipphone}
+    </select>
+
+
+    <select id="queryOrderFormByPay" resultType="OrderForm" parameterType="int">
+        SELECT *
+        FROM tb_orderform
+        WHERE pay=#{pay}
+    </select>
+
+    <select id="payOrder">
+        UPDATE tb_orderform
+        SET pay = 1
+        WHERE orderTime=#{orderTime} AND room=#{room}
+    </select>
+
+</mapper>
