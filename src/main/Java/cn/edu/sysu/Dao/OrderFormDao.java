@@ -49,7 +49,8 @@ public interface OrderFormDao {
      *
      * @param orderTime 下订单的时间
      * @param room      下订单的房间
+     * @return 修改数据库的行数
      */
-    void payOrder(@Param("orderTime") Date orderTime, @Param("room") String room);
+    int payOrder(@Param("orderTime") Date orderTime, @Param("room") String room);
 
 }

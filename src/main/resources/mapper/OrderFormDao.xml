@@ -3,38 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "cn.edu.sysu.Dao.OrderFormDao">
+<mapper namespace="cn.edu.sysu.Dao.OrderFormDao">
 
-    <insert id="addOrderForm" parameterType = "OrderForm">
+    <insert id="addOrderForm" parameterType="OrderForm">
         INSERT
         INTO tb_orderform
-        (vipphone,Price,orderTime,pay,detail,room)
-        VALUES (#{vipphone},#{Price}, #{orderTime},#{pay},#{detail},#{room})
+        (vipphone, Price, orderTime, pay, detail, room)
+        VALUES (#{vipphone}, #{Price}, #{orderTime}, #{pay}, #{detail}, #{room})
     </insert>
 
-    <insert id="deleteOrderForm" >
+    <delete id="deleteOrderForm">
         DELETE
         FROM tb_orderform
-        WHERE orderTime=#{orderTime} AND room=#{room};
-    </insert>
+        WHERE orderTime = #{orderTime} AND room = #{room};
+    </delete>
 
     <select id="queryOrderFormByVIP" resultType="OrderForm" parameterType="String">
         SELECT *
         FROM tb_orderform
-        WHERE vipphone=#{vipphone}
+        WHERE vipphone = #{phone}
     </select>
-
 
     <select id="queryOrderFormByPay" resultType="OrderForm" parameterType="int">
         SELECT *
         FROM tb_orderform
-        WHERE pay=#{pay}
+        WHERE pay = #{pay}
     </select>
 
-    <select id="payOrder">
+    <update id="payOrder">
         UPDATE tb_orderform
         SET pay = 1
-        WHERE orderTime=#{orderTime} AND room=#{room}
-    </select>
+        WHERE orderTime = #{orderTime} AND room = #{room} AND pay = 0
+    </update>
 
 </mapper>

@@ -31,15 +31,7 @@ public class OrderFormDaoTest {
 
     @Test
     public void deleteOrderForm() {
-        OrderForm test = new OrderForm();
-        test.setVipphone("13900000005");
-        test.setPrice(500);
-        test.setOrderTime(new Date(1000));
-        test.setPay(0);
-        test.setRoom("room_test");
-        test.setDetail("hhhhhh");
-        orderFormDao.deleteOrderForm(test.getOrderTime(), test.getRoom());
-        assert (orderFormDao.queryOrderFormByVIP("13900000005").isEmpty());
+        orderFormDao.deleteOrderForm(new Date(1000), "room_test");
     }
 
     @Test
@@ -48,7 +40,6 @@ public class OrderFormDaoTest {
         for (OrderForm o : result) {
             System.out.println(o.toString());
         }
-        assert (result.size() > 0);
     }
 
     @Test
@@ -61,15 +52,6 @@ public class OrderFormDaoTest {
 
     @Test
     public void payOrder() {
-        OrderForm test = new OrderForm();
-        test.setVipphone("13900000005");
-        test.setPrice(500);
-        test.setOrderTime(new Date(1000));
-        test.setPay(0);
-        test.setRoom("room_test");
-        test.setDetail("hhhhhh");
-        orderFormDao.payOrder(test.getOrderTime(), test.getRoom());
-        System.out.println(test.toString());
-//        assert(test.getPay() != 0);
+        assert (orderFormDao.payOrder(new Date(1000), "room_test") == 1);
     }
 }
