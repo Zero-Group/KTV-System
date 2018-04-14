@@ -43,6 +43,11 @@ public class RoomDaoTest {
     }
 
     @Test
+    public void renewRoom() {
+        assert (roomDao.renewRoom(2, "L", 1) == 1);
+    }
+
+    @Test
     public void queryRoom() {
         System.out.println(roomDao.queryRoom(2, "L").toString());
     }

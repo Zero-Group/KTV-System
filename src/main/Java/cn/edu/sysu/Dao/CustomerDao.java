@@ -18,4 +18,9 @@ public interface CustomerDao {
      */
     void addCustomer(Customer customer);
 
+    /**
+     * 删除数据库中的所有顾客
+     */
+    void deleteAllCustomer();
+
 }

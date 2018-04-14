@@ -56,6 +56,17 @@ public interface RoomDao {
     int checkoutRoom(@Param("id") int id, @Param("type") String type);
 
     /**
+     * 根据给定的房间类型、房间编号、续费时间
+     * 来进行续费，修改房间的结束使用时间
+     *
+     * @param id    房间编号
+     * @param type  房间类型
+     * @param hours 续费小时数
+     * @return 修改数据库的行数
+     */
+    int renewRoom(@Param("id") int id, @Param("type") String type, @Param("hours") int hours);
+
+    /**
      * 根据给定的房间类型和房间编号查询房间
      *
      * @param id   房间编号

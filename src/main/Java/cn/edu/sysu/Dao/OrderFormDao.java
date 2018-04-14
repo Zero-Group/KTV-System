@@ -1,7 +1,6 @@
 package cn.edu.sysu.Dao;
 
 import cn.edu.sysu.Entity.OrderForm;
-import cn.edu.sysu.Entity.VIP;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -41,7 +40,7 @@ public interface OrderFormDao {
      * 查询已付费（未付费）的所有订单
      *
      * @param pay 是否付块信息
-     * @return  未付费的所有订单列表
+     * @return 未付费的所有订单列表
      */
     List<OrderForm> queryOrderFormByPay(int pay);
 

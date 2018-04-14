@@ -19,4 +19,10 @@ public class CustomerDaoTest {
     public void addCustomer() {
         customerDao.addCustomer(new Customer());
     }
+
+    @Test
+    public void deleteAllCustomer() {
+        customerDao.deleteAllCustomer();
+    }
+
 }

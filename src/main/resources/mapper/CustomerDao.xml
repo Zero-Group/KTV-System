@@ -12,4 +12,9 @@
         VALUES (#{id})
     </insert>
 
+    <delete id="deleteAllCustomer">
+        DELETE
+        FROM tb_customer
+    </delete>
+
 </mapper>

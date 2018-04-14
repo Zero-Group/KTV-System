@@ -30,6 +30,12 @@
         WHERE id = #{id} AND type = #{type}
     </update>
 
+    <update id="renewRoom">
+        UPDATE tb_room
+        SET end_time = DATE_ADD(end_time, INTERVAL #{hours} HOUR)
+        WHERE id = #{id} AND type = #{type}
+    </update>
+
     <select id="queryRoom" resultType="Room">
         SELECT *
         FROM tb_room
