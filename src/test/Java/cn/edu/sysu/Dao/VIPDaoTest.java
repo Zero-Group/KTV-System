@@ -10,14 +10,6 @@ import javax.annotation.Resource;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
-/**
- * Project name: KTV-System
- * Package name: cn.edu.sysu.Dao
- * Created by Houben on 2018/4/5
- * Description:
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath*:spring/spring-dao.xml"})
 public class VIPDaoTest {
@@ -56,5 +48,11 @@ public class VIPDaoTest {
         for (VIP vip : result)
             System.out.println(vip.toString());
         assert (result.size() > 0);
+    }
+
+    @Test
+    public void changeName(){
+        vipDao.changeName("10101","changedNmae");
+//        assert(vipDao.queryVIPByName("changedName").size() > 0);
     }
 }

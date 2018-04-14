@@ -30,4 +30,10 @@
         WHERE phone=#{phone}
     </select>
 
+    <select id="changeName">
+        UPDATE tb_vip
+        SET cname=#{cname}
+        WHERE phone=#{phone}
+    </select>
+
 </mapper>

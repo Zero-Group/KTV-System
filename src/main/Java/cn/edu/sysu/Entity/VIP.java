@@ -4,7 +4,8 @@ package cn.edu.sysu.Entity;
  * Project name: KTV-System
  * Package name: cn.edu.sysu.Entity
  * Created by Houben on 2018/4/5
- * Description:
+ * Description:VIP实体类，包含cname，phone信息
+ * 并提供set，get，tostring等方法
  */
 public class VIP {
     private String cname;
