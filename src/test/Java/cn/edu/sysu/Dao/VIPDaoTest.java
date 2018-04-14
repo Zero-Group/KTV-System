@@ -52,7 +52,6 @@ public class VIPDaoTest {
 
     @Test
     public void changeName(){
-        vipDao.changeName("10101","changedNmae");
-//        assert(vipDao.queryVIPByName("changedName").size() > 0);
+        assert(vipDao.changeName("10101","newName") > 0);
     }
 }

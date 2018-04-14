@@ -15,25 +15,25 @@
     <delete id="deleteVIP" parameterType="VIP">
         DELETE
         FROM tb_vip
-        WHERE cname=#{cname} AND phone=#{phone};
+        WHERE cname = #{cname} AND phone = #{phone};
     </delete>
 
     <select id="queryVIPByName" resultType="VIP" parameterType="string">
         SELECT *
         FROM tb_vip
-        WHERE cname=#{cname}
+        WHERE cname = #{cname}
     </select>
 
     <select id="queryVIPByPhone" resultType="VIP" parameterType="string">
         SELECT *
         FROM tb_vip
-        WHERE phone=#{phone}
+        WHERE phone = #{phone}
     </select>
 
-    <select id="changeName">
+    <update id="changeName">
         UPDATE tb_vip
-        SET cname=#{cname}
-        WHERE phone=#{phone}
-    </select>
+        SET cname = #{cname}
+        WHERE phone = #{phone}
+    </update>
 
 </mapper>
