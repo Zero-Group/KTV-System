@@ -20,7 +20,7 @@
 
     <update id="bookingRoom">
         UPDATE tb_room
-        SET status = 1, start_time = #{startTime}, end_time = #{endTime}
+        SET status = 1, start_time = #{startTime}, end_time = DATE_ADD(#{startTime}, INTERVAL #{hours} HOUR)
         WHERE id = #{id} AND type = #{type}
     </update>
 

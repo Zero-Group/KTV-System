@@ -1,40 +1,43 @@
-package cn.edu.sysu.Dao;
+package cn.edu.sysu.Service;
 
 import cn.edu.sysu.Entity.OrderForm;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
 
 /**
  * Project name: KTV-System
- * Package name: cn.edu.sysu.Dao
- * Created by Houben on 2018/4/10
- * Description:OrderForm（订单）数据访问接口
+ * Package name: cn.edu.sysu.Service
+ * Created by lihan on 2018/4/14
+ * Description: OrderForm的业务层接口，提供
+ * 对OrderForm的增加、删除、修改以及查询等方法。
  */
-public interface OrderFormDao {
+public interface OrderFormService {
+
     /**
      * 新增一个订单
      *
      * @param OrderForm 将要被增加的订单
+     * @return 返回增加订单的结果
      */
-    void addOrderForm(OrderForm OrderForm);
+    String addOrderForm(OrderForm OrderForm);
 
     /**
-     * 根据主键删除一个订单
+     * 删除一个订单
      *
      * @param orderTime 下订单的时间
      * @param room      下订单的房间号
+     * @return 返回删除订单的结果
      */
-    void deleteOrderForm(@Param("orderTime") Date orderTime, @Param("room") String room);
+    String deleteOrderForm(Date orderTime, String room);
 
     /**
      * 查询一个VIP会员的所有订单信息
      *
-     * @param vipphone 查询的VIP的电话号码
+     * @param phone 查询的VIP的电话号码
      * @return 该VIP所有订单信息列表
      */
-    List<OrderForm> queryOrderFormByVIP(String vipphone);
+    List<OrderForm> queryOrderFormByVIP(String phone);
 
     /**
      * 查询已付费（未付费）的所有订单
@@ -49,8 +52,8 @@ public interface OrderFormDao {
      *
      * @param orderTime 下订单的时间
      * @param room      下订单的房间
-     * @return 修改数据库的行数
+     * @return 返回支付订单的结果
      */
-    int payOrder(@Param("orderTime") Date orderTime, @Param("room") String room);
+    String payOrder(Date orderTime, String room);
 
 }

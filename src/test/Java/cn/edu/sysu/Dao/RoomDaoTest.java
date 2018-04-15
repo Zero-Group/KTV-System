@@ -34,7 +34,7 @@ public class RoomDaoTest {
     @Test
     public void bookingRoom() {
         long currentTime = System.currentTimeMillis();
-        assert (roomDao.bookingRoom(2, "L", new Date(currentTime), new Date(currentTime + 3 * 3600 * 1000)) == 1);
+        assert (roomDao.bookingRoom(2, "L", new Date(currentTime), 2) == 1);
     }
 
     @Test

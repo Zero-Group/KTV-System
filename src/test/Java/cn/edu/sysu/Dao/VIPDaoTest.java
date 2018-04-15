@@ -44,10 +44,8 @@ public class VIPDaoTest {
 
     @Test
     public void queryVIPByPhone() {
-        List<VIP> result = vipDao.queryVIPByPhone("123456789");
-        for (VIP vip : result)
-            System.out.println(vip.toString());
-        assert (result.size() > 0);
+        VIP result = vipDao.queryVIPByPhone("123456789");
+        System.out.println(result.toString());
     }
 
     @Test

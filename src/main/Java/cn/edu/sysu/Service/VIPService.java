@@ -1,31 +1,33 @@
-package cn.edu.sysu.Dao;
+package cn.edu.sysu.Service;
 
 import cn.edu.sysu.Entity.VIP;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
  * Project name: KTV-System
- * Package name: cn.edu.sysu.Dao
- * Created by Houben on 2018/4/5
- * Description:VIP数据访问接口，提供
- * 添加，删除，查询vip会员的功能
+ * Package name: cn.edu.sysu.Service
+ * Created by lihan on 2018/4/14
+ * Description: VIP的业务层接口，提供
+ * 对VIP的增加、删除、修改以及查询等方法。
  */
-public interface VIPDao {
+public interface VIPService {
+
     /**
      * 商家添加VIP会员
      *
      * @param VIP 将要添加的VIP会员
+     * @return 返回添加的结果
      */
-    void addVIP(VIP VIP);
+    String addVIP(VIP VIP);
 
     /**
      * 商家删除VIP会员
      *
      * @param VIP 将要被删除的VIP会员
+     * @return 返回删除的结果
      */
-    void deleteVIP(VIP VIP);
+    String deleteVIP(VIP VIP);
 
     /**
      * 根据姓名信息查询VIP信息
@@ -46,9 +48,10 @@ public interface VIPDao {
     /**
      * 更改用户名
      *
-     * @param phone 需要更改的用户主键（phone）
+     * @param phone 需要更改的用户主键(phone)
      * @param cname 需要更改的名字
-     * @return 修改数据库的行数
+     * @return 返回修改的结果
      */
-    int changeName(@Param("phone") String phone, @Param("cname") String cname);
+    String changeName(String phone, String cname);
+
 }
