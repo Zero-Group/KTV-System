@@ -12,11 +12,16 @@
         VALUES (#{cname}, #{phone})
     </insert>
 
-    <delete id="deleteVIP" parameterType="VIP">
+    <delete id="deleteVIP" parameterType="string">
         DELETE
         FROM tb_vip
-        WHERE cname = #{cname} AND phone = #{phone};
+        WHERE phone = #{phone};
     </delete>
+
+    <select id="queryAllVIP" resultType="VIP">
+        SELECT *
+        FROM tb_vip
+    </select>
 
     <select id="queryVIPByName" resultType="VIP" parameterType="string">
         SELECT *

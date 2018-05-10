@@ -17,49 +17,51 @@ public class FoodServiceTest {
     private FoodService foodService;
 
     @Test
-    public void addFood() {
+    public void test() {
+        addFood();
+        increaseStock();
+        reduceStock();
+        changePrice();
+        queryAllFood();
+        queryFoodByFName();
+        deleteFood();
+    }
+
+    private void addFood() {
         Food food = new Food();
         food.setFname("炸鸡");
         food.setPrice(10.00);
         food.setStock(50);
-        assert (foodService.addFood(food).equals("添加成功"));
+        assert (foodService.addFood(food)
+                .getMessage().equals("新增食物成功！"));
     }
 
-    @Test
-    public void deleteFood() {
-        String fname = "炸鸡";
-        assert (foodService.deleteFood(fname).equals("删除成功"));
+    private void deleteFood() {
+        assert (foodService.deleteFood("炸鸡")
+                .getMessage().equals("删除食物成功！"));
     }
 
-    @Test
-    public void increaseStock() {
-        String fname = "炸鸡";
-        int number = 1;
-        assert (foodService.increaseStock(fname,number).equals("增加库存成功"));
+    private void increaseStock() {
+        assert (foodService.increaseStock("炸鸡", 5)
+                .getMessage().equals("增加食物库存成功！"));
     }
 
-    @Test
-    public void reduceStock() {
-        String fname = "炸鸡";
-        int number = 1;
-        assert (foodService.reduceStock(fname,number).equals("减少库存成功"));
+    private void reduceStock() {
+        assert (foodService.reduceStock("炸鸡", 10)
+                .getMessage().equals("减少食物库存成功！"));
     }
 
-    @Test
-    public void changePrice() {
-        String fname = "炸鸡";
-        int newPrice = 1;
-        assert (foodService.changePrice(fname,newPrice).equals("更改价格成功"));
+    private void changePrice() {
+        assert (foodService.changePrice("炸鸡", 12)
+                .getMessage().equals("修改食物价格成功！"));
     }
 
-    @Test
-    public void queryAllFood() {
+    private void queryAllFood() {
         List<Food> foods = foodService.queryAllFood();
         foods.forEach(System.out::println);
     }
 
-    @Test
-    public void queryFoodByFName() {
+    private void queryFoodByFName() {
         Food food = foodService.queryFoodByFName("炸鸡");
         System.out.println(food.toString());
     }

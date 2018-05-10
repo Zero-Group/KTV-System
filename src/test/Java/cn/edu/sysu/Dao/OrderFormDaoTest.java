@@ -37,17 +37,13 @@ public class OrderFormDaoTest {
     @Test
     public void queryOrderFormByvipphone() {
         List<OrderForm> result = orderFormDao.queryOrderFormByVIP("13900000005");
-        for (OrderForm o : result) {
-            System.out.println(o.toString());
-        }
+        result.forEach(System.out::println);
     }
 
     @Test
     public void queryOrderFormByPay() {
         List<OrderForm> result = orderFormDao.queryOrderFormByPay(0);
-        for (OrderForm o : result) {
-            System.out.println(o.toString());
-        }
+        result.forEach(System.out::println);
     }
 
     @Test

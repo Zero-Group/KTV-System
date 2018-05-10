@@ -1,10 +1,16 @@
 package cn.edu.sysu.Service.Impl;
 
 import cn.edu.sysu.Dao.RoomDao;
+import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.Room;
+import cn.edu.sysu.Exception.KTVException;
+import cn.edu.sysu.Exception.RoomException;
 import cn.edu.sysu.Service.RoomService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -18,37 +24,96 @@ import java.util.List;
 @Service
 public class RoomServiceIpml implements RoomService {
 
+    //日志对象
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private RoomDao roomDao;
 
     @Override
-    public String addRoom(Room room) {
-        roomDao.addRoom(room);
-        return "添加成功";
+    @Transactional
+    public OperationStatus addRoom(Room room) throws KTVException {
+        try {
+            if (roomDao.queryRoom(room.getId(), room.getType()) != null) {
+                throw new RoomException("房间" + room.getType() + room.getId() + "已存在！");
+            }
+            roomDao.addRoom(room);
+            return new OperationStatus("新增房间成功！");
+        } catch (RoomException e1) {
+            throw e1;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            throw new KTVException("Inner error:" + e.getMessage());
+        }
     }
 
     @Override
-    public String deleteRoom(int id, String type) {
-        roomDao.deleteRoom(id,type);
-        return "删除成功";
+    @Transactional
+    public OperationStatus deleteRoom(int id, String type) throws KTVException {
+        try {
+            if (roomDao.queryRoom(id, type) == null) {
+                throw new RoomException("房间" + type + id + "不存在！");
+            }
+            roomDao.deleteRoom(id, type);
+            return new OperationStatus("删除房间成功！");
+        } catch (RoomException e1) {
+            throw e1;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            throw new KTVException("Inner error:" + e.getMessage());
+        }
     }
 
     @Override
-    public String bookingRoom(int id, String type, Date startTime, Date endTime) {
-        roomDao.bookingRoom(id,type,startTime,(int)(endTime.getTime() - startTime.getTime()));
-        return "订房成功";
+    @Transactional
+    public OperationStatus bookingRoom(int id, String type, Date startTime, int hours) throws KTVException {
+        try {
+            if (roomDao.queryRoom(id, type) == null) {
+                throw new RoomException("房间" + type + id + "不存在！");
+            }
+            if (roomDao.queryRoom(id, type).getStatus() == 1) {
+                throw new RoomException("房间正在使用！");
+            }
+            roomDao.bookingRoom(id, type, startTime, hours);
+            return new OperationStatus("订房成功！");
+        } catch (RoomException e1) {
+            throw e1;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            throw new KTVException("Inner error:" + e.getMessage());
+        }
     }
 
     @Override
-    public String checkoutRoom(int id, String type) {
-        roomDao.checkoutRoom(id,type);
-        return "查询房间成功";
+    public OperationStatus checkoutRoom(int id, String type) throws KTVException {
+        try {
+            if (roomDao.queryRoom(id, type) == null) {
+                throw new RoomException("房间" + type + id + "不存在！");
+            }
+            roomDao.checkoutRoom(id, type);
+            return new OperationStatus("结束使用房间成功！");
+        } catch (RoomException e1) {
+            throw e1;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            throw new KTVException("Inner error:" + e.getMessage());
+        }
     }
 
     @Override
-    public String renewRoom(int id, String type, int hours) {
-        roomDao.renewRoom(id, type, hours);
-        return "更新成功";
+    public OperationStatus renewRoom(int id, String type, int hours) throws KTVException {
+        try {
+            if (roomDao.queryRoom(id, type) == null) {
+                throw new RoomException("房间" + type + id + "不存在！");
+            }
+            roomDao.renewRoom(id, type, hours);
+            return new OperationStatus("续费房间成功！");
+        } catch (RoomException e1) {
+            throw e1;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            throw new KTVException("Inner error:" + e.getMessage());
+        }
     }
 
     @Override

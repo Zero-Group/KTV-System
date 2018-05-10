@@ -1,8 +1,36 @@
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-         version="3.1"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0"
          metadata-complete="true">
 
+    <servlet>
+        <servlet-name>fromMysql</servlet-name>
+        <servlet-class>cn.edu.sysu.Web.LoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fromMysql</servlet-name>
+        <url-pattern>/LoginFromMysql</url-pattern>
+    </servlet-mapping>
+
+    <!--配置DispatcherServlet-->
+    <servlet>
+        <servlet-name>ktv-dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--
+            配置SpringMVC 需要配置的文件
+            spring-dao.xml，spring-service.xml,spring-web.xml
+            Mybites -> spring -> springMvc
+        -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/spring-*.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ktv-dispatcher</servlet-name>
+        <!--默认匹配所有请求-->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 </web-app>

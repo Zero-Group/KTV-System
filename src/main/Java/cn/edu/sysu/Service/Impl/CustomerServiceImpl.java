@@ -1,6 +1,7 @@
 package cn.edu.sysu.Service.Impl;
 
 import cn.edu.sysu.Dao.CustomerDao;
+import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.Customer;
 import cn.edu.sysu.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,15 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerDao customerDao;
 
     @Override
-    public void addCustomer(Customer customer) {
+    public OperationStatus addCustomer(Customer customer) {
         customerDao.addCustomer(customer);
+        return new OperationStatus("新增顾客成功！");
     }
 
     @Override
-    public String deleteAllCustomer() {
+    public OperationStatus deleteAllCustomer() {
         customerDao.deleteAllCustomer();
-        return "成功删除所有顾客";
+        return new OperationStatus("删除所有顾客成功！");
     }
 
 }

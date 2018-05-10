@@ -49,31 +49,25 @@ public class RoomDaoTest {
 
     @Test
     public void queryRoom() {
-        System.out.println(roomDao.queryRoom(2, "L").toString());
+        System.out.println(roomDao.queryRoom(1, "L").toString());
     }
 
     @Test
     public void queryAllRoom() {
         List<Room> rooms = roomDao.queryAllRoom();
-        for (Room room : rooms) {
-            System.out.println(room.toString());
-        }
+        rooms.forEach(System.out::println);
     }
 
     @Test
     public void queryEmptyRoom() {
         List<Room> rooms = roomDao.queryEmptyRoom();
-        for (Room room : rooms) {
-            System.out.println(room.toString());
-        }
+        rooms.forEach(System.out::println);
     }
 
     @Test
     public void queryEmptyRoomByType() {
         List<Room> rooms = roomDao.queryEmptyRoomByType("L");
-        for (Room room : rooms) {
-            System.out.println(room.toString());
-        }
+        rooms.forEach(System.out::println);
     }
 
 }

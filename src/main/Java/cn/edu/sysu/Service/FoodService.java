@@ -1,5 +1,6 @@
 package cn.edu.sysu.Service;
 
+import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.Food;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public interface FoodService {
      * @param food 将要被添加的食物
      * @return 返回添加食物的结果
      */
-    String addFood(Food food);
+    OperationStatus addFood(Food food);
 
     /**
      * 删除系统中的食物
@@ -27,7 +28,7 @@ public interface FoodService {
      * @param fname 将要删除的食物名称
      * @return 返回删除食物的结果
      */
-    String deleteFood(String fname);
+    OperationStatus deleteFood(String fname);
 
     /**
      * 商家增加系统中的食物的库存数量
@@ -36,7 +37,7 @@ public interface FoodService {
      * @param number 食物数量
      * @return 返回添加库存数量的结果
      */
-    String increaseStock(String fname, int number);
+    OperationStatus increaseStock(String fname, int number);
 
     /**
      * 消费时减少系统中的食物的库存数量
@@ -45,7 +46,7 @@ public interface FoodService {
      * @param number 食物数量
      * @return 返回减少库存数量的结果
      */
-    String reduceStock(String fname, int number);
+    OperationStatus reduceStock(String fname, int number);
 
     /**
      * 商家修改食物的价格
@@ -54,7 +55,7 @@ public interface FoodService {
      * @param newPrice 新的价格
      * @return 返回修改价格的结果
      */
-    String changePrice(String fname, int newPrice);
+    OperationStatus changePrice(String fname, int newPrice);
 
     /**
      * 查询所有食物的价格、库存量等信息

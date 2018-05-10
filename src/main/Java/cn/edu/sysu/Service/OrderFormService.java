@@ -1,5 +1,6 @@
 package cn.edu.sysu.Service;
 
+import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.OrderForm;
 
 import java.util.Date;
@@ -17,10 +18,10 @@ public interface OrderFormService {
     /**
      * 新增一个订单
      *
-     * @param OrderForm 将要被增加的订单
+     * @param orderForm 将要被增加的订单
      * @return 返回增加订单的结果
      */
-    String addOrderForm(OrderForm OrderForm);
+    OperationStatus addOrderForm(OrderForm orderForm);
 
     /**
      * 删除一个订单
@@ -29,7 +30,7 @@ public interface OrderFormService {
      * @param room      下订单的房间号
      * @return 返回删除订单的结果
      */
-    String deleteOrderForm(Date orderTime, String room);
+    OperationStatus deleteOrderForm(Date orderTime, String room);
 
     /**
      * 查询一个VIP会员的所有订单信息
@@ -54,6 +55,6 @@ public interface OrderFormService {
      * @param room      下订单的房间
      * @return 返回支付订单的结果
      */
-    String payOrder(Date orderTime, String room);
+    OperationStatus payOrder(Date orderTime, String room);
 
 }

@@ -1,5 +1,6 @@
 package cn.edu.sysu.Service;
 
+import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.Customer;
 
 /**
@@ -15,14 +16,15 @@ public interface CustomerService {
      * 顾客订房时，商家增加一个顾客
      *
      * @param customer 将要增加的顾客
+     * @return 返回增加顾客的结果
      */
-    void addCustomer(Customer customer);
+    OperationStatus addCustomer(Customer customer);
 
     /**
      * 商家清理数据库时，删除所有顾客信息
      *
      * @return 返回删除的结果
      */
-    String deleteAllCustomer();
+    OperationStatus deleteAllCustomer();
 
 }
