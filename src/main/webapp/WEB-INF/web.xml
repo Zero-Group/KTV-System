@@ -5,15 +5,6 @@
          version="3.0"
          metadata-complete="true">
 
-    <servlet>
-        <servlet-name>fromMysql</servlet-name>
-        <servlet-class>cn.edu.sysu.Web.LoginController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>fromMysql</servlet-name>
-        <url-pattern>/LoginFromMysql</url-pattern>
-    </servlet-mapping>
-
     <!--配置DispatcherServlet-->
     <servlet>
         <servlet-name>ktv-dispatcher</servlet-name>
