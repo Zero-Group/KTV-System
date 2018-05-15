@@ -34,6 +34,24 @@ public class RoomController {
         return "roomManagement";
     }
 
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public String allRoom(Model model) {
+        List<Room> roomList = roomService.queryAllRoom();
+        model.addAttribute("list", roomList);
+        model.addAttribute("title", "所有房间");
+        return "roomList";
+    }
+
+    @RequestMapping(value = "/query", method = RequestMethod.GET)
+    public String queryRoom() {
+        return "roomQuery";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String addRoom() {
+        return "roomAdd";
+    }
+
     @RequestMapping(value = "/{type}-{id}/detail", method = RequestMethod.GET)
     public String detail(@PathVariable("id") Integer id,
                          @PathVariable("type") String type, Model model) {
@@ -47,14 +65,6 @@ public class RoomController {
         model.addAttribute("room", room);
         model.addAttribute("title", "房间 " + type + id + " 详情");
         return "roomDetail";
-    }
-
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public String allRoom(Model model) {
-        List<Room> roomList = roomService.queryAllRoom();
-        model.addAttribute("list", roomList);
-        model.addAttribute("title", "所有房间");
-        return "roomList";
     }
 
 }
