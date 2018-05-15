@@ -33,6 +33,13 @@ public interface OrderFormService {
     OperationStatus deleteOrderForm(Date orderTime, String room);
 
     /**
+     * 查询系统中的所有订单信息
+     *
+     * @return 系统中所有的订单
+     */
+    List<OrderForm> queryAllOrderForm();
+
+    /**
      * 查询一个VIP会员的所有订单信息
      *
      * @param phone 查询的VIP的电话号码

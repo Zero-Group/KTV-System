@@ -29,6 +29,13 @@ public interface OrderFormDao {
     void deleteOrderForm(@Param("orderTime") Date orderTime, @Param("room") String room);
 
     /**
+     * 查询数据库中的所有订单信息
+     *
+     * @return 数据库中所有的订单
+     */
+    List<OrderForm> queryAllOrderForm();
+
+    /**
      * 查询一个VIP会员的所有订单信息
      *
      * @param vipphone 查询的VIP的电话号码

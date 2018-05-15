@@ -18,6 +18,11 @@
         WHERE orderTime = #{orderTime} AND room = #{room};
     </delete>
 
+    <select id="queryAllOrderForm" resultType="OrderForm">
+        SELECT *
+        FROM tb_orderform
+    </select>
+
     <select id="queryOrderFormByVIP" resultType="OrderForm" parameterType="String">
         SELECT *
         FROM tb_orderform

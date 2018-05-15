@@ -68,6 +68,11 @@ public class OrderFormServiceImpl implements OrderFormService {
     }
 
     @Override
+    public List<OrderForm> queryAllOrderForm() {
+        return orderFormDao.queryAllOrderForm();
+    }
+
+    @Override
     public List<OrderForm> queryOrderFormByVIP(String phone) {
         return orderFormDao.queryOrderFormByVIP(phone);
     }
