@@ -71,7 +71,7 @@
                             </a>
                         </li>
 
-                        <li>
+                        <li class="active">
                             <a href="<c:url value="/vip/query"/>">
                                 <i class="icon-search"></i>
                                 查询会员

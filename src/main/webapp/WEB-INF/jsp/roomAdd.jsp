@@ -46,7 +46,7 @@
                             </a>
                         </li>
 
-                        <li>
+                        <li class="active">
                             <a href="<c:url value="/room/add"/>">
                                 <i class="icon-plus"></i>
                                 新增房间

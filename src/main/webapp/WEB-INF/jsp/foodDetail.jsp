@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
-  User: lixinheng
+  User: lijinzhu
   Date: 2018/5/14
-  Time: 22:46
+  Time: 22:44
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="common/tag.jsp" %>
 <html>
 <head>
-    <title>查询订单</title>
+    <title>食物详情</title>
     <%@include file="common/head.jsp" %>
 </head>
 <body>
@@ -87,7 +87,7 @@
                     </ul>
                 </li>
 
-                <li class="active">
+                <li>
                     <a href="<c:url value="/account"/>" class="dropdown-toggle">
                         <i class="icon-bar-chart"></i>
                         <span class="menu-text">账目管理</span>
@@ -96,7 +96,7 @@
                     </a>
 
                     <ul class="submenu">
-                        <li>
+                        <li class="active">
                             <a href="<c:url value="/account/food"/>" class="dropdown-toggle">
                                 <i class="icon-food"></i>
                                 食物管理
@@ -119,14 +119,14 @@
                                 </li>
                                 <li>
                                     <a href="<c:url value="/account/food/add"/>" class="dropdown-toggle">
-                                        <i class="icon-"></i>
+                                        <i class="icon-plus"></i>
                                         新增食物
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
-                        <li class="active">
+                        <li>
                             <a href="<c:url value="/account/order"/>" class="dropdown-toggle">
                                 <i class="icon-money"></i>
                                 订单管理
@@ -141,7 +141,7 @@
                                     </a>
                                 </li>
 
-                                <li class="active">
+                                <li>
                                     <a href="<c:url value="/account/order/query"/>">
                                         <i class="icon-search"></i>
                                         查询订单
