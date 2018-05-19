@@ -55,7 +55,7 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="<c:url value="/vip"/>" class="dropdown-toggle">
                         <i class="icon-user"></i>
                         <span class="menu-text">会员管理</span>

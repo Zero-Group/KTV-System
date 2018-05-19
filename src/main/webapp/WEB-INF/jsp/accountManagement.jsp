@@ -87,7 +87,7 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="<c:url value="/account"/>" class="dropdown-toggle">
                         <i class="icon-bar-chart"></i>
                         <span class="menu-text">账目管理</span>

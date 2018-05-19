@@ -24,7 +24,7 @@
         <div class="sidebar" id="sidebar">
 
             <ul class="nav nav-list">
-                <li>
+                <li class="active">
                     <a href="<c:url value="/room"/>" class="dropdown-toggle">
                         <i class="icon-home"></i>
                         <span class="menu-text">房间管理</span>

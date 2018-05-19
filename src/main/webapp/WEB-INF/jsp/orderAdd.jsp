@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
-  User: fndnh
-  Date: 2018/5/10
-  Time: 19:25
+  User: lixinheng
+  Date: 2018/5/14
+  Time: 22:45
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="common/tag.jsp" %>
 <html>
 <head>
-    <title>会员详情</title>
+    <title>新增订单</title>
     <%@include file="common/head.jsp" %>
 </head>
 <body>
@@ -55,7 +55,7 @@
                     </ul>
                 </li>
 
-                <li class="active">
+                <li>
                     <a href="<c:url value="/vip"/>" class="dropdown-toggle">
                         <i class="icon-user"></i>
                         <span class="menu-text">会员管理</span>
@@ -87,7 +87,7 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="active">
                     <a href="<c:url value="/account"/>" class="dropdown-toggle">
                         <i class="icon-bar-chart"></i>
                         <span class="menu-text">账目管理</span>
@@ -126,7 +126,7 @@
                             </ul>
                         </li>
 
-                        <li>
+                        <li class="active">
                             <a href="<c:url value="/account/order"/>" class="dropdown-toggle">
                                 <i class="icon-money"></i>
                                 订单管理
@@ -169,14 +169,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <div class="panel panel-default text-center">
-                            <div class="panel-heading text-center">
-                                <h2>${title}</h2>
-                            </div>
-                            <div class="panel-body">
-                                ${vip.cname} ${vip.phone}
-                            </div>
-                        </div>
+
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
                 </div><!-- /.row -->
