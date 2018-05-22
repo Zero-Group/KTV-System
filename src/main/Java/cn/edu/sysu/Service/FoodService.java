@@ -65,6 +65,14 @@ public interface FoodService {
     List<Food> queryAllFood();
 
     /**
+     * 根据给定的食物编号查询食物信息
+     *
+     * @param id 食物编号
+     * @return 返回该食物
+     */
+    Food queryFoodById(int id);
+
+    /**
      * 根据给定的食物名称查询食物信息
      *
      * @param fname 食物名称

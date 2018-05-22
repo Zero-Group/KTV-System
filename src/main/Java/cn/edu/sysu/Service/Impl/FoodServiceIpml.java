@@ -127,6 +127,11 @@ public class FoodServiceIpml implements FoodService {
     }
 
     @Override
+    public Food queryFoodById(int id) {
+        return foodDao.queryFoodById(id);
+    }
+
+    @Override
     public Food queryFoodByFName(String fname) {
         return foodDao.queryFoodByFName(fname);
     }

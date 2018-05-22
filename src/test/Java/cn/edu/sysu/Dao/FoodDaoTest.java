@@ -53,6 +53,12 @@ public class FoodDaoTest {
     }
 
     @Test
+    public void queryFoodById() {
+        Food food = foodDao.queryFoodById(100);
+        System.out.println(food.toString());
+    }
+
+    @Test
     public void queryFoodByFName() {
         Food food = foodDao.queryFoodByFName("测试食物");
         System.out.println(food.toString());

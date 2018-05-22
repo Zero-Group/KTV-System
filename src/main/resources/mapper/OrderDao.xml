@@ -23,6 +23,12 @@
         FROM tb_order
     </select>
 
+    <select id="queryOrderById" resultType="Order" parameterType="int">
+        SELECT *
+        FROM tb_order
+        WHERE id = #{id}
+    </select>
+
     <select id="queryOrderByVIP" resultType="Order" parameterType="String">
         SELECT *
         FROM tb_order

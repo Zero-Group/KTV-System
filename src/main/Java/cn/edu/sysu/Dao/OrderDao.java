@@ -33,6 +33,14 @@ public interface OrderDao {
     List<Order> queryAllOrder();
 
     /**
+     * 根据订单编号订单信息
+     *
+     * @param id 查询订单编号
+     * @return 该V订单信息
+     */
+    Order queryOrderById(int id);
+
+    /**
      * 查询一个VIP会员的所有订单信息
      *
      * @param cname 查询的VIP姓名

@@ -42,6 +42,12 @@
         FROM tb_food
     </select>
 
+    <select id="queryFoodById" parameterType="int" resultType="Food">
+        SELECT *
+        FROM tb_food
+        WHERE id = #{id}
+    </select>
+
     <select id="queryFoodByFName" parameterType="string" resultType="Food">
         SELECT *
         FROM tb_food

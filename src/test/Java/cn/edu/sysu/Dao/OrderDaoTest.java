@@ -40,7 +40,13 @@ public class OrderDaoTest {
     }
 
     @Test
-    public void queryOrderByvipphone() {
+    public void queryOrderById() {
+        Order result = orderDao.queryOrderById(100);
+        System.out.println(result.toString());
+    }
+
+    @Test
+    public void queryOrderByVIP() {
         List<Order> result = orderDao.queryOrderByVIP("Alice");
         result.forEach(System.out::println);
     }

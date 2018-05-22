@@ -69,6 +69,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Order queryOrderById(int id) {
+        return orderDao.queryOrderById(id);
+    }
+
+    @Override
     public List<Order> queryOrderByVIP(String cname) {
         return orderDao.queryOrderByVIP(cname);
     }
@@ -82,6 +87,9 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public OperationStatus payOrder(int id) throws KTVException {
         try {
+            if (orderDao.queryOrderById(id).getPay() == 1) {
+                throw new OrderException("该订单已支付，请勿重复支付！");
+            }
             orderDao.payOrder(id);
             return new OperationStatus("支付订单成功！");
         } catch (OrderException e1) {

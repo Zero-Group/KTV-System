@@ -23,6 +23,7 @@ public class FoodServiceTest {
         reduceStock();
         changePrice();
         queryAllFood();
+        queryFoodById();
         queryFoodByFName();
         deleteFood();
     }
@@ -59,6 +60,11 @@ public class FoodServiceTest {
     private void queryAllFood() {
         List<Food> foods = foodService.queryAllFood();
         foods.forEach(System.out::println);
+    }
+
+    private void queryFoodById() {
+        Food food = foodService.queryFoodById(100);
+        System.out.println(food.toString());
     }
 
     private void queryFoodByFName() {

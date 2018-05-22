@@ -20,6 +20,8 @@ public class OrderServiceTest {
     @Test
     public void test() {
         addOrder();
+        queryAllOrder();
+        queryOrderById();
         queryOrderByPay();
         queryOrderByVIP();
         payOrder();
@@ -36,6 +38,18 @@ public class OrderServiceTest {
         order.setDetail("无详细信息！");
         assert (orderService.addOrder(order)
                 .getMessage().equals("新增订单成功！"));
+    }
+
+    private void queryAllOrder() {
+        List<Order> result = orderService
+                .queryAllOrder();
+        result.forEach(System.out::println);
+    }
+
+    private void queryOrderById() {
+        Order result = orderService
+                .queryOrderById(100);
+        System.out.println(result.toString());
     }
 
     private void queryOrderByVIP() {
