@@ -14,11 +14,13 @@ import java.util.List;
         "classpath*:spring/spring-service.xml"})
 public class VIPServiceTest {
     @Resource
-    private VIPService VIPService;
+    private VIPService vipService;
 
     @Test
     public void test() {
         addVIP();
+        queryAll();
+        queryById();
         queryByName();
         queryByPhone();
         changeName();
@@ -28,30 +30,39 @@ public class VIPServiceTest {
     private void addVIP() {
         VIP vip = new VIP();
         vip.setCname("Test");
-        vip.setPhone("10101");
-        assert (VIPService.addVIP(vip)
+        vip.setPhone("110");
+        assert (vipService.addVIP(vip)
                 .getMessage().equals("新增会员成功！"));
     }
 
+    private void queryAll() {
+        List<VIP> result = vipService.queryAllVIP();
+        result.forEach(System.out::println);
+    }
+
+    private void queryById() {
+        VIP vip = vipService.queryVIPById(100);
+        System.out.println(vip.toString());
+    }
+
     private void queryByName() {
-        List<VIP> vips = VIPService.queryVIPByName("Test");
-        vips.forEach(System.out::println);
+        VIP vip = vipService.queryVIPByName("Test");
+        System.out.println(vip.toString());
     }
 
     private void queryByPhone() {
-        VIP vip = VIPService.queryVIPByPhone("10101");
+        VIP vip = vipService.queryVIPByPhone("10101");
         System.out.println(vip.toString());
     }
 
     private void changeName() {
         String new_name = "newName";
-        String phone = "10101";
-        assert (VIPService.changeName(phone, new_name)
+        assert (vipService.changeName(100, new_name)
                 .getMessage().equals("会员姓名更改成功！"));
     }
 
     private void deleteVIP() {
-        assert (VIPService.deleteVIP("10101")
+        assert (vipService.deleteVIP("Test")
                 .getMessage().equals("删除会员成功！"));
     }
 

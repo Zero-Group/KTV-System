@@ -6,13 +6,13 @@ package cn.edu.sysu.Exception;
  * Created by lihan on 2018/5/9
  * Description: OrderForm相关操作的运行时异常
  */
-public class OrderFormException extends KTVException {
+public class OrderException extends KTVException {
 
-    public OrderFormException(String message) {
+    public OrderException(String message) {
         super(message);
     }
 
-    public OrderFormException(String message, Throwable cause) {
+    public OrderException(String message, Throwable cause) {
         super(message, cause);
     }
 

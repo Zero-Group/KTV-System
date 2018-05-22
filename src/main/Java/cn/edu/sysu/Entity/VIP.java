@@ -8,8 +8,18 @@ package cn.edu.sysu.Entity;
  * 并提供set，get，tostring等方法
  */
 public class VIP {
+
+    private int id;
     private String cname;
     private String phone;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCname() {
         return cname;

@@ -10,9 +10,18 @@ package cn.edu.sysu.Entity;
  */
 public class Food {
 
+    private int id;
     private String fname;
     private double price;
     private int stock;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFname() {
         return fname;

@@ -35,8 +35,11 @@ public class VIPServiceImpl implements VIPService {
     @Transactional
     public OperationStatus addVIP(VIP vip) throws KTVException {
         try {
+            if (vipDao.queryVIPByName(vip.getCname()) != null) {
+                throw new VIPException("该会员名已注册！");
+            }
             if (vipDao.queryVIPByPhone(vip.getPhone()) != null) {
-                throw new VIPException("该电话号码已注册！");
+                throw new VIPException("该电话号码已被注册！");
             }
             vipDao.addVIP(vip);
             return new OperationStatus("新增会员成功！");
@@ -50,12 +53,12 @@ public class VIPServiceImpl implements VIPService {
 
     @Override
     @Transactional
-    public OperationStatus deleteVIP(String phone) throws KTVException {
+    public OperationStatus deleteVIP(String cname) throws KTVException {
         try {
-            if (vipDao.queryVIPByPhone(phone) == null) {
-                throw new VIPException("该电话号码未注册！");
+            if (vipDao.queryVIPByName(cname) == null) {
+                throw new VIPException("该会员名未注册！");
             }
-            vipDao.deleteVIP(phone);
+            vipDao.deleteVIP(cname);
             return new OperationStatus("删除会员成功！");
         } catch (VIPException e1) {
             throw e1;
@@ -71,7 +74,12 @@ public class VIPServiceImpl implements VIPService {
     }
 
     @Override
-    public List<VIP> queryVIPByName(String cname) {
+    public VIP queryVIPById(int id) {
+        return vipDao.queryVIPById(id);
+    }
+
+    @Override
+    public VIP queryVIPByName(String cname) {
         return vipDao.queryVIPByName(cname);
     }
 
@@ -82,15 +90,12 @@ public class VIPServiceImpl implements VIPService {
 
     @Override
     @Transactional
-    public OperationStatus changeName(String phone, String cname) throws KTVException {
+    public OperationStatus changeName(int id, String cname) throws KTVException {
         try {
-            if (vipDao.queryVIPByPhone(phone) == null) {
-                throw new VIPException("该电话号码未注册！");
-            }
-            if (vipDao.queryVIPByPhone(phone).getCname().equals(cname)) {
+            if (vipDao.queryVIPById(id).getCname().equals(cname)) {
                 throw new VIPException("新用户名与原用户名相同！");
             }
-            vipDao.changeName(phone, cname);
+            vipDao.changeName(id, cname);
             return new OperationStatus("会员姓名更改成功！");
         } catch (VIPException e1) {
             throw e1;

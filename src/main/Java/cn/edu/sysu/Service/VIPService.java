@@ -25,10 +25,10 @@ public interface VIPService {
     /**
      * 商家删除VIP会员
      *
-     * @param phone 将要被删除的VIP会员电话号码
+     * @param cname 将要被删除的VIP会员名字
      * @return 返回删除VIP会员的结果
      */
-    OperationStatus deleteVIP(String phone);
+    OperationStatus deleteVIP(String cname);
 
     /**
      * 查询所有VIP会员信息
@@ -40,10 +40,18 @@ public interface VIPService {
     /**
      * 根据姓名信息查询VIP会员信息
      *
-     * @param cname VIP会员姓名
-     * @return 返回符合姓名查询的VIP列表
+     * @param id VIP会员编号
+     * @return 返回符合姓名查询的VIP
      */
-    List<VIP> queryVIPByName(String cname);
+    VIP queryVIPById(int id);
+
+    /**
+     * 根据姓名信息查询VIP会员信息
+     *
+     * @param cname VIP会员姓名
+     * @return 返回符合姓名查询的VIP
+     */
+    VIP queryVIPByName(String cname);
 
     /**
      * 根据电话查询VIP信息
@@ -56,10 +64,10 @@ public interface VIPService {
     /**
      * 更改会员名字
      *
-     * @param phone 需要更改的VIP会员phone
+     * @param id    VIP会员编号
      * @param cname 新的VIP会员名字
      * @return 返回更改VIP会员名字的结果
      */
-    OperationStatus changeName(String phone, String cname);
+    OperationStatus changeName(int id, String cname);
 
 }

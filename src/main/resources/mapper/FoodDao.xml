@@ -5,11 +5,11 @@
 
 <mapper namespace="cn.edu.sysu.Dao.FoodDao">
 
-    <insert id="addFood" parameterType="Food">
+    <insert id="addFood" parameterType="Food" useGeneratedKeys="true">
         INSERT
         INTO tb_food
-        (fname, price, stock)
-        VALUES (#{fname}, #{price}, #{stock})
+        (id, fname, price, stock)
+        VALUES (#{id}, #{fname}, #{price}, #{stock})
     </insert>
 
     <delete id="deleteFood" parameterType="string">

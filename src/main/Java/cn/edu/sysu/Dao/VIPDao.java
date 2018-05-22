@@ -19,15 +19,15 @@ public interface VIPDao {
      * @param vip 将要添加的VIP会员
      * @return 修改数据库的行数
      */
-    int addVIP(VIP vip);
+    void addVIP(VIP vip);
 
     /**
      * 商家删除VIP会员
      *
-     * @param phone 将要被删除的VIP会员的电话号码
+     * @param cname 将要被删除的VIP会员名字
      * @return 修改数据库的行数
      */
-    int deleteVIP(String phone);
+    void deleteVIP(String cname);
 
     /**
      * 查询所有VIP会员信息
@@ -39,10 +39,18 @@ public interface VIPDao {
     /**
      * 根据姓名信息查询VIP会员信息
      *
-     * @param cname VIP会员姓名
-     * @return 返回符合姓名查询的VIP列表
+     * @param id VIP会员编号
+     * @return 返回符合姓名查询的VIP
      */
-    List<VIP> queryVIPByName(String cname);
+    VIP queryVIPById(int id);
+
+    /**
+     * 根据姓名信息查询VIP会员信息
+     *
+     * @param cname VIP会员姓名
+     * @return 返回符合姓名查询的VIP
+     */
+    VIP queryVIPByName(String cname);
 
     /**
      * 根据电话查询VIP信息
@@ -55,9 +63,9 @@ public interface VIPDao {
     /**
      * 更改会员名
      *
-     * @param phone 需要更改的VIP会员phone
+     * @param id    需要更改的VIP会员编号
      * @param cname 新的VIP会员名字
      * @return 修改数据库的行数
      */
-    int changeName(@Param("phone") String phone, @Param("cname") String cname);
+    int changeName(@Param("id") int id, @Param("cname") String cname);
 }

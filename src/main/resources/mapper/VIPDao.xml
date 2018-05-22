@@ -5,22 +5,28 @@
 
 <mapper namespace="cn.edu.sysu.Dao.VIPDao">
 
-    <insert id="addVIP" parameterType="VIP">
+    <insert id="addVIP" parameterType="VIP" useGeneratedKeys="true">
         INSERT
         INTO tb_vip
-        (cname, phone)
-        VALUES (#{cname}, #{phone})
+        (id, cname, phone)
+        VALUES (#{id}, #{cname}, #{phone})
     </insert>
 
     <delete id="deleteVIP" parameterType="string">
         DELETE
         FROM tb_vip
-        WHERE phone = #{phone};
+        WHERE cname = #{cname};
     </delete>
 
     <select id="queryAllVIP" resultType="VIP">
         SELECT *
         FROM tb_vip
+    </select>
+
+    <select id="queryVIPById" resultType="VIP" parameterType="int">
+        SELECT *
+        FROM tb_vip
+        WHERE id = #{id}
     </select>
 
     <select id="queryVIPByName" resultType="VIP" parameterType="string">
@@ -38,7 +44,7 @@
     <update id="changeName">
         UPDATE tb_vip
         SET cname = #{cname}
-        WHERE phone = #{phone}
+        WHERE id = #{id}
     </update>
 
 </mapper>

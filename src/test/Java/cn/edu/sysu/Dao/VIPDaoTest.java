@@ -20,13 +20,13 @@ public class VIPDaoTest {
     public void addVIP() {
         VIP vip = new VIP();
         vip.setCname("Test");
-        vip.setPhone("10101");
-        assert (vipDao.addVIP(vip) == 1);
+        vip.setPhone("110");
+        vipDao.addVIP(vip);
     }
 
     @Test
     public void deleteVIP() {
-        assert (vipDao.deleteVIP("10101") == 1);
+        vipDao.deleteVIP("Test");
     }
 
     @Test
@@ -36,19 +36,25 @@ public class VIPDaoTest {
     }
 
     @Test
+    public void queryVIPById() {
+        VIP result = vipDao.queryVIPById(100);
+        System.out.println(result.toString());
+    }
+
+    @Test
     public void queryVIPByName() {
-        List<VIP> result = vipDao.queryVIPByName("Alice");
-        result.forEach(System.out::println);
+        VIP result = vipDao.queryVIPByName("Test");
+        System.out.println(result.toString());
     }
 
     @Test
     public void queryVIPByPhone() {
-        VIP result = vipDao.queryVIPByPhone("12345678910");
+        VIP result = vipDao.queryVIPByPhone("110");
         System.out.println(result.toString());
     }
 
     @Test
     public void changeName(){
-        assert(vipDao.changeName("10101","newName") == 1);
+        assert(vipDao.changeName(100,"newName") == 1);
     }
 }

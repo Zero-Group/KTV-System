@@ -20,7 +20,7 @@ public class FoodDaoTest {
     @Test
     public void addFood() {
         Food food = new Food();
-        food.setFname("炸鸡");
+        food.setFname("测试食物");
         food.setPrice(10.00);
         food.setStock(50);
         foodDao.addFood(food);
@@ -28,17 +28,22 @@ public class FoodDaoTest {
 
     @Test
     public void deleteFood() {
-        foodDao.deleteFood("炸鸡");
+        foodDao.deleteFood("测试食物");
     }
 
     @Test
     public void increaseStock() {
-        assert (foodDao.increaseStock("炸鸡", 5) == 1);
+        assert (foodDao.increaseStock("测试食物", 5) == 1);
     }
 
     @Test
     public void reduceStock() {
-        assert (foodDao.reduceStock("炸鸡", 5) == 1);
+        assert (foodDao.reduceStock("测试食物", 10) == 1);
+    }
+
+    @Test
+    public void changePrice() {
+        assert (foodDao.changePrice("测试食物", 45) == 1);
     }
 
     @Test
@@ -49,7 +54,7 @@ public class FoodDaoTest {
 
     @Test
     public void queryFoodByFName() {
-        Food food = foodDao.queryFoodByFName("炸鸡");
+        Food food = foodDao.queryFoodByFName("测试食物");
         System.out.println(food.toString());
     }
 }
