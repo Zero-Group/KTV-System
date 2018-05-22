@@ -15,7 +15,7 @@
 <body>
 <!-- 页面显示 -->
 
-<%@include file="common/navbar.jsp"%>
+<%@include file="common/navbar.jsp" %>
 
 <div class="main-container" id="main-container">
 
@@ -57,100 +57,21 @@
                 </li>
 
                 <li>
-                    <a href="<c:url value="/vip"/>" class="dropdown-toggle">
+                    <a href="<c:url value="/vip"/>">
                         <i class="icon-user"></i>
                         <span class="menu-text">会员管理</span>
 
                         <b class="arrow icon-angle-down"></b>
                     </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="<c:url value="/vip/all"/>">
-                                <i class="icon-list-ul"></i>
-                                所有会员
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<c:url value="/vip/query"/>">
-                                <i class="icon-search"></i>
-                                查询会员
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<c:url value="/vip/add"/>">
-                                <i class="icon-plus"></i>
-                                新增会员
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li>
-                    <a href="<c:url value="/account"/>" class="dropdown-toggle">
+                    <a href="<c:url value="/account"/>">
                         <i class="icon-bar-chart"></i>
                         <span class="menu-text">账目管理</span>
 
                         <b class="arrow icon-angle-down"></b>
                     </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="<c:url value="/account/food"/>" class="dropdown-toggle">
-                                <i class="icon-food"></i>
-                                食物管理
-                                <b class="arrow icon-angle-down"></b>
-                            </a>
-
-                            <ul class="submenu">
-                                <li>
-                                    <a href="<c:url value="/account/food/all"/>">
-                                        <i class="icon-list-ul"></i>
-                                        所有食物
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="<c:url value="/account/food/query"/>" class="dropdown-toggle">
-                                        <i class="icon-search"></i>
-                                        查询食物
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<c:url value="/account/food/add"/>" class="dropdown-toggle">
-                                        <i class="icon-"></i>
-                                        新增食物
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="<c:url value="/account/order"/>" class="dropdown-toggle">
-                                <i class="icon-money"></i>
-                                订单管理
-                                <b class="arrow icon-angle-down"></b>
-                            </a>
-
-                            <ul class="submenu">
-                                <li>
-                                    <a href="<c:url value="/account/order/all"/>">
-                                        <i class="icon-list-ul"></i>
-                                        所有订单
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="<c:url value="/account/order/query"/>">
-                                        <i class="icon-search"></i>
-                                        查询订单
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
                 </li>
             </ul><!-- /.nav-list -->
 
@@ -163,6 +84,10 @@
                         <i class="icon-home home-icon"></i>
                         <a href="<c:url value="/ktv"/>">主页</a>
                     </li>
+                    <li>
+                        <a href="<c:url value="/room"/>">房间管理</a>
+                    </li>
+                    <li class="active">${title}</li>
                 </ul><!-- .breadcrumb -->
             </div>
 
@@ -170,40 +95,54 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading text-center">
-                                <h2>${title}</h2>
+
+                        <c:forEach var="i" begin="1" end="${rows}">
+                            <div class="row">
+                                <c:forEach items="${list}" var="room" begin="${6*(i-1)}" end="${6*(i-1)+5}">
+                                    <div class="col-xs-12 col-sm-2 widget-container-span ui-sortable">
+                                        <a href="/room/${room.type}-${room.id}/detail" style="text-decoration: none;">
+                                            <div class="widget-box" style="opacity: 1;">
+                                                <div class="widget-header">
+                                                    <h4 class="grey">房间 ${room.type}${room.id}</h4>
+
+                                                    <div class="widget-toolbar">
+                                                        <c:choose>
+                                                            <c:when test="${room.status == 1}">
+                                                                <span class="label label-danger">消费</span>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <span class="label label-success">空闲</span>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </div>
+
+                                                <div class="widget-body">
+                                                    <div class="widget-main padding-2">
+                                                        <c:choose>
+                                                            <c:when test="${room.status == 1}">
+                                                                <div class="alert alert-info">
+                                                                    时间：<br>
+                                                                    <fmt:formatDate pattern="yyyy-MM-dd hh:mm"
+                                                                                    value="${room.startTime}"/><br>
+                                                                    <fmt:formatDate pattern="yyyy-MM-dd hh:mm"
+                                                                                    value="${room.endTime}"/><br>
+                                                                </div>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <div class="alert alert-info"><br><br><br></div>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </c:forEach>
                             </div>
-                            <div class="panel-body">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <td>编号</td>
-                                        <td>类型</td>
-                                        <td>状态</td>
-                                        <td>开始时间</td>
-                                        <td>结束时间</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach items="${list}" var="room">
-                                        <tr>
-                                            <td>${room.id}</td>
-                                            <td>${room.type}</td>
-                                            <td>${room.status}</td>
-                                            <td>
-                                                <fmt:formatDate value="${room.startTime}" pattern="yyyy-MM-dd HH:mm:ss" />
-                                            </td>
-                                            <td>
-                                                <fmt:formatDate value="${room.endTime}" pattern="yyyy-MM-dd HH:mm:ss" />
-                                            </td>
-                                            <td><a class="btn btn-info" href="/room/${room.type}-${room.id}/detail" target="_blank">详情</a></td>
-                                        </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                            <br>
+                        </c:forEach>
+
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -218,9 +157,38 @@
 
 </body>
 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<!-- basic scripts -->
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--[if !IE]> -->
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+</script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+<script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
+
+<!-- page specific plugin scripts -->
+
+<!-- ace scripts -->
+<script src="<c:url value="/assets/js/ace-elements.min.js"/>"></script>
+<script src="<c:url value="/assets/js/ace.min.js"/>"></script>
+
 </html>
