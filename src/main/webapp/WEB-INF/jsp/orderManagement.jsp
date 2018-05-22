@@ -14,7 +14,7 @@
 </head>
 <body>
 <!-- 页面显示 -->
-<%@include file="common/navbar.jsp"%>
+<%@include file="common/navbar.jsp" %>
 
 <div class="main-container" id="main-container">
 
@@ -24,67 +24,21 @@
 
             <ul class="nav nav-list">
                 <li>
-                    <a href="<c:url value="/room"/>" class="dropdown-toggle">
+                    <a href="<c:url value="/room"/>">
                         <i class="icon-home"></i>
                         <span class="menu-text">房间管理</span>
 
                         <b class="arrow icon-angle-down"></b>
                     </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="<c:url value="/room/all"/>">
-                                <i class="icon-list-ul"></i>
-                                所有房间
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<c:url value="/room/query"/>">
-                                <i class="icon-search"></i>
-                                查询房间
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<c:url value="/room/add"/>">
-                                <i class="icon-plus"></i>
-                                新增房间
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li>
-                    <a href="<c:url value="/vip"/>" class="dropdown-toggle">
+                    <a href="<c:url value="/vip"/>">
                         <i class="icon-user"></i>
                         <span class="menu-text">会员管理</span>
 
                         <b class="arrow icon-angle-down"></b>
                     </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="<c:url value="/vip/all"/>">
-                                <i class="icon-list-ul"></i>
-                                所有会员
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<c:url value="/vip/query"/>">
-                                <i class="icon-search"></i>
-                                查询会员
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<c:url value="/vip/add"/>">
-                                <i class="icon-plus"></i>
-                                新增会员
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li class="active">
@@ -97,33 +51,11 @@
 
                     <ul class="submenu">
                         <li>
-                            <a href="<c:url value="/account/food"/>" class="dropdown-toggle">
+                            <a href="<c:url value="/account/food"/>">
                                 <i class="icon-food"></i>
                                 食物管理
                                 <b class="arrow icon-angle-down"></b>
                             </a>
-
-                            <ul class="submenu">
-                                <li>
-                                    <a href="<c:url value="/account/food/all"/>">
-                                        <i class="icon-list-ul"></i>
-                                        所有食物
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="<c:url value="/account/food/query"/>" class="dropdown-toggle">
-                                        <i class="icon-search"></i>
-                                        查询食物
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<c:url value="/account/food/add"/>" class="dropdown-toggle">
-                                        <i class="icon-"></i>
-                                        新增食物
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
                         <li class="active">
@@ -162,6 +94,10 @@
                         <i class="icon-home home-icon"></i>
                         <a href="<c:url value="/ktv"/>">主页</a>
                     </li>
+                    <li>
+                        <a href="<c:url value="/account"/>">账目管理</a>
+                    </li>
+                    <li class="active">订单管理</li>
                 </ul><!-- .breadcrumb -->
             </div>
 
@@ -184,9 +120,38 @@
 
 </body>
 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<!-- basic scripts -->
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--[if !IE]> -->
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+</script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+<script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
+
+<!-- page specific plugin scripts -->
+
+<!-- ace scripts -->
+<script src="<c:url value="/assets/js/ace-elements.min.js"/>"></script>
+<script src="<c:url value="/assets/js/ace.min.js"/>"></script>
+
 </html>
