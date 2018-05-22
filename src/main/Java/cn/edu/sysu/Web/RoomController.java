@@ -38,6 +38,7 @@ public class RoomController {
     public String allRoom(Model model) {
         List<Room> roomList = roomService.queryAllRoom();
         model.addAttribute("list", roomList);
+        model.addAttribute("rows", Math.ceil(roomList.size() / 6.0));
         model.addAttribute("title", "所有房间");
         return "roomList";
     }
@@ -63,7 +64,7 @@ public class RoomController {
             return "redirect:/room/all";
         }
         model.addAttribute("room", room);
-        model.addAttribute("title", "房间 " + type + id + " 详情");
+        model.addAttribute("title", "房间详情");
         return "roomDetail";
     }
 

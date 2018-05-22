@@ -34,6 +34,7 @@ public class VIPController {
     public String allVIP(Model model) {
         List<VIP> allVIP = vipService.queryAllVIP();
         model.addAttribute("list", allVIP);
+        model.addAttribute("rows", Math.ceil(allVIP.size() / 6.0));
         model.addAttribute("title", "所有会员");
         return "vipList";
     }
@@ -48,32 +49,18 @@ public class VIPController {
         return "vipAdd";
     }
 
-    @RequestMapping(value = "/phone={phone}/detail", method = RequestMethod.GET)
-    public String VIPByPhone(@PathVariable("phone") String phone, Model model) {
-        if (phone == null) {
+    @RequestMapping(value = "/id={id}/detail", method = RequestMethod.GET)
+    public String VIPByPhone(@PathVariable("id") Integer id, Model model) {
+        if (id == null) {
             return "redirect:/vip/all";
         }
-        VIP vip = vipService.queryVIPByPhone(phone);
+        VIP vip = vipService.queryVIPById(id);
         if (vip == null) {
             return "redirect:/vip/all";
         }
         model.addAttribute("vip", vip);
-        model.addAttribute("title", "会员：" + vip.getCname() + "电话：" + phone);
+        model.addAttribute("title", "会员详情");
         return "vipDetail";
-    }
-
-    @RequestMapping(value = "/name={cname}", method = RequestMethod.GET)
-    public String VIPByName(@PathVariable("cname") String cname, Model model) {
-        if (cname == null) {
-            return "redirect:/vip/all";
-        }
-        List<VIP> vipList = vipService.queryVIPByName(cname);
-        if (vipList == null) {
-            return "redirect:/vip/all";
-        }
-        model.addAttribute("list", vipList);
-        model.addAttribute("title", "名字为" + cname + "的会员");
-        return "vipList";
     }
 
 }

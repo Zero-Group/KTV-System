@@ -1,14 +1,15 @@
 package cn.edu.sysu.Web;
 
 import cn.edu.sysu.Entity.Food;
-import cn.edu.sysu.Entity.OrderForm;
+import cn.edu.sysu.Entity.Order;
 import cn.edu.sysu.Service.FoodService;
-import cn.edu.sysu.Service.OrderFormService;
+import cn.edu.sysu.Service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -31,7 +32,7 @@ public class AccountController {
     private FoodService foodService;
 
     @Autowired
-    private OrderFormService orderFormService;
+    private OrderService orderService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String AccountManagement() {
@@ -47,6 +48,7 @@ public class AccountController {
     public String allRoom(Model model) {
         List<Food> foodList = foodService.queryAllFood();
         model.addAttribute("list", foodList);
+        model.addAttribute("rows", Math.ceil(foodList.size() / 6.0));
         model.addAttribute("title", "所有食物");
         return "foodList";
     }
@@ -61,6 +63,20 @@ public class AccountController {
         return "foodAdd";
     }
 
+    @RequestMapping(value = "/food/id={id}/detail", method = RequestMethod.GET)
+    public String foodDetail(@PathVariable("id") Integer id, Model model) {
+        if (id == null) {
+            return "redirect:/account/food/all";
+        }
+        Food food = foodService.queryFoodById(id);
+        if (food == null) {
+            return "redirect:/account/food/all";
+        }
+        model.addAttribute("food", food);
+        model.addAttribute("title", "食物详情");
+        return "foodDetail";
+    }
+
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String OrderManagement() {
         return "orderManagement";
@@ -68,8 +84,9 @@ public class AccountController {
 
     @RequestMapping(value = "/order/all", method = RequestMethod.GET)
     public String allOrder(Model model) {
-        List<OrderForm> orderformList = orderFormService.queryAllOrderForm();
-        model.addAttribute("list", orderformList);
+        List<Order> orderList = orderService.queryAllOrder();
+        model.addAttribute("list", orderList);
+        model.addAttribute("rows", Math.ceil(orderList.size() / 6.0));
         model.addAttribute("title", "所有订单");
         return "orderList";
     }
@@ -82,5 +99,19 @@ public class AccountController {
     @RequestMapping(value = "/order/add", method = RequestMethod.GET)
     public String addOrder() {
         return "orderAdd";
+    }
+
+    @RequestMapping(value = "/order/id={id}/detail", method = RequestMethod.GET)
+    public String orderDetail(@PathVariable("id") Integer id, Model model) {
+        if (id == null) {
+            return "redirect:/account/order/all";
+        }
+        Order order = orderService.queryOrderById(id);
+        if (order == null) {
+            return "redirect:/account/order/all";
+        }
+        model.addAttribute("order", order);
+        model.addAttribute("title", "账单详情");
+        return "orderDetail";
     }
 }
