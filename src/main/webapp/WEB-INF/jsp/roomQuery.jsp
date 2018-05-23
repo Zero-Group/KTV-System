@@ -14,7 +14,7 @@
 </head>
 <body>
 <!-- 页面显示 -->
-<%@include file="common/navbar.jsp"%>
+<%@include file="common/navbar.jsp" %>
 
 <div class="main-container" id="main-container">
 
@@ -56,100 +56,21 @@
                 </li>
 
                 <li>
-                    <a href="<c:url value="/vip"/>" class="dropdown-toggle">
+                    <a href="<c:url value="/vip"/>">
                         <i class="icon-user"></i>
                         <span class="menu-text">会员管理</span>
 
                         <b class="arrow icon-angle-down"></b>
                     </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="<c:url value="/vip/all"/>">
-                                <i class="icon-list-ul"></i>
-                                所有会员
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<c:url value="/vip/query"/>">
-                                <i class="icon-search"></i>
-                                查询会员
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="<c:url value="/vip/add"/>">
-                                <i class="icon-plus"></i>
-                                新增会员
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li>
-                    <a href="<c:url value="/account"/>" class="dropdown-toggle">
+                    <a href="<c:url value="/account"/>">
                         <i class="icon-bar-chart"></i>
                         <span class="menu-text">账目管理</span>
 
                         <b class="arrow icon-angle-down"></b>
                     </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="<c:url value="/account/food"/>" class="dropdown-toggle">
-                                <i class="icon-food"></i>
-                                食物管理
-                                <b class="arrow icon-angle-down"></b>
-                            </a>
-
-                            <ul class="submenu">
-                                <li>
-                                    <a href="<c:url value="/account/food/all"/>">
-                                        <i class="icon-list-ul"></i>
-                                        所有食物
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="<c:url value="/account/food/query"/>" class="dropdown-toggle">
-                                        <i class="icon-search"></i>
-                                        查询食物
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<c:url value="/account/food/add"/>" class="dropdown-toggle">
-                                        <i class="icon-"></i>
-                                        新增食物
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="<c:url value="/account/order"/>" class="dropdown-toggle">
-                                <i class="icon-money"></i>
-                                订单管理
-                                <b class="arrow icon-angle-down"></b>
-                            </a>
-
-                            <ul class="submenu">
-                                <li>
-                                    <a href="<c:url value="/account/order/all"/>">
-                                        <i class="icon-list-ul"></i>
-                                        所有订单
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="<c:url value="/account/order/query"/>">
-                                        <i class="icon-search"></i>
-                                        查询订单
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
                 </li>
             </ul><!-- /.nav-list -->
 
@@ -170,6 +91,54 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
+                        <div class="row">
+                            <div class="col-xs-12 center">
+                                <div class="well-lg blue">
+                                    <h1>查询房间</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4"></div>
+                            <div class="col-xs-12 col-sm-4">
+                                <div class="alert alert-info">
+                                    <strong>提示：</strong><br>
+                                    输入房间号可查询该房间，输入“空”可查询所有空房间，输入“空”加房间类型可查询该类型的空房间
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4"></div>
+                            <div class="col-xs-12 col-sm-4">
+                                <form class="form-search" action="<c:url value="/room/query"/>" method="post">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="input-group">
+                                                <input type="text" name="key" class="form-control search-query"
+                                                       placeholder="请按照提示输入..."/>
+                                                <span class="input-group-btn">
+                                                    <button type="submit" class="btn btn-info btn-sm">
+                                                        搜索
+                                                        <i class="icon-search icon-on-right bigger-110"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-xs-12 col-sm-4"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 center">
+                                <div class="center red">
+                                    ${msg}
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -184,9 +153,38 @@
 
 </body>
 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<!-- basic scripts -->
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--[if !IE]> -->
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+</script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+<script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
+
+<!-- page specific plugin scripts -->
+
+<!-- ace scripts -->
+<script src="<c:url value="/assets/js/ace-elements.min.js"/>"></script>
+<script src="<c:url value="/assets/js/ace.min.js"/>"></script>
+
 </html>

@@ -10,38 +10,7 @@
 <html>
 <head>
     <title>KTV管理系统</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 引入 Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
-    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- basic styles -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css"/>
-
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css"/>
-    <![endif]-->
-
-    <!-- page specific plugin styles -->
-
-    <!-- fonts -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300"/>
-
-    <!-- ace styles -->
-    <link rel="stylesheet" href="assets/css/ace.min.css"/>
-    <link rel="stylesheet" href="assets/css/ace-rtl.min.css"/>
-
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="assets/css/ace-ie.min.css"/>
-    <![endif]-->
-
+    <%@include file="common/head.jsp" %>
 </head>
 
 <body class="login-layout">
@@ -128,8 +97,38 @@
 
 </body>
 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+</script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+<script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
+<script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
+
+<!-- page specific plugin scripts -->
+
+<!-- ace scripts -->
+<script src="<c:url value="/assets/js/ace-elements.min.js"/>"></script>
+<script src="<c:url value="/assets/js/ace.min.js"/>"></script>
+
 </html>

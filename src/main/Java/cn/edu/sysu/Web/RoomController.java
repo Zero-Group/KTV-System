@@ -11,13 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
  * Project name: KTV-System
  * Package name: cn.edu.sysu.Web
  * Created by lihan on 2018/4/26
- * Description:
+ * Description: Room相关页面的Controller
  */
 
 @Controller
@@ -46,6 +48,47 @@ public class RoomController {
     @RequestMapping(value = "/query", method = RequestMethod.GET)
     public String queryRoom() {
         return "roomQuery";
+    }
+
+    @RequestMapping(value = "/query")
+    public String doRoomQuery(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String keyWord = request.getParameter("key");
+
+        if (keyWord.length() == 1) {
+            List<Room> result = roomService.queryEmptyRoom();
+            if (result == null) {
+                model.addAttribute("msg", "未查询到空房间！");
+                return "roomQuery";
+            }
+            model.addAttribute("list", result);
+            model.addAttribute("rows", Math.ceil(result.size() / 6.0));
+            model.addAttribute("title", "查询结果");
+            return "roomList";
+        } else if (keyWord.length() == 2 && String.valueOf(keyWord.charAt(0)).equals("空")) {
+            List<Room> result = roomService.queryEmptyRoomByType(String.valueOf(keyWord.charAt(1)));
+            if (result == null) {
+                model.addAttribute("msg", "未查询到空房间！");
+                return "roomQuery";
+            }
+            model.addAttribute("list", result);
+            model.addAttribute("rows", Math.ceil(result.size() / 6.0));
+            model.addAttribute("title", "查询结果");
+            return "roomList";
+        } else if (keyWord.length() == 2 && !String.valueOf(keyWord.charAt(0)).equals("空")) {
+            Room room = roomService.queryRoom(keyWord.charAt(1) - '0', String.valueOf(keyWord.charAt(0)));
+            if (room == null) {
+                model.addAttribute("msg", "未查询到相关房间信息！");
+                return "roomQuery";
+            }
+            model.addAttribute("room", room);
+            model.addAttribute("title", "房间详情");
+            return "roomDetail";
+        } else {
+            model.addAttribute("msg", "请输入有效字符！");
+            return "roomQuery";
+        }
+
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
