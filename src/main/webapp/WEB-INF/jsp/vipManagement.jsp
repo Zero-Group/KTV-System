@@ -14,7 +14,7 @@
 </head>
 <body>
 <!-- 页面显示 -->
-<%@include file="common/navbar.jsp"%>
+<%@include file="common/navbar.jsp" %>
 
 <div class="main-container" id="main-container">
 
@@ -133,14 +133,9 @@
                             </div>
                         </div>
                         <div class="col-sm-5" style="float:right;">
-                            <canvas id="canvas" width="500" height="500">cccc</canvas>
+                            <canvas id="canvas" width="500" height="500"></canvas>
 
-                            <div style="text-align:center;clear:both">
-                                <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-                                <script src="/follow.js" type="text/javascript"></script>
-                            </div>
-
-                            <script src="assets/js/clock2.js"></script>
+                            <script src="<c:url value="/assets/js/clock2.js"/>"></script>
                         </div>
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
