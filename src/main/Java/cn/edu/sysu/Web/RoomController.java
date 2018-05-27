@@ -1,6 +1,8 @@
 package cn.edu.sysu.Web;
 
+import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.Room;
+import cn.edu.sysu.Exception.KTVException;
 import cn.edu.sysu.Service.RoomService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -93,6 +95,27 @@ public class RoomController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addRoom() {
+        return "roomAdd";
+    }
+
+    @RequestMapping(value = "/add")
+    public String doRoomAdd(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String roomType = request.getParameter("roomType");
+        String roomNum = request.getParameter("roomNum");
+        Room room = new Room();
+        room.setType(roomType);
+        room.setId(Integer.parseInt(roomNum));
+        OperationStatus result;
+        try {
+            result = roomService.addRoom(room);
+        } catch (KTVException e) {
+            model.addAttribute("succeed", false);
+            model.addAttribute("msg", e.getMessage());
+            return "roomAdd";
+        }
+        model.addAttribute("succeed", true);
+        model.addAttribute("msg", result.getMessage());
         return "roomAdd";
     }
 

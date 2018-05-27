@@ -1,6 +1,8 @@
 package cn.edu.sysu.Web;
 
+import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.VIP;
+import cn.edu.sysu.Exception.KTVException;
 import cn.edu.sysu.Service.VIPService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,6 +78,27 @@ public class VIPController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addVIP() {
+        return "vipAdd";
+    }
+
+    @RequestMapping(value = "/add")
+    public String doVIPAdd(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String cname = request.getParameter("cname");
+        String phone = request.getParameter("phone");
+        VIP vip = new VIP();
+        vip.setCname(cname);
+        vip.setPhone(phone);
+        OperationStatus result;
+        try {
+            result = vipService.addVIP(vip);
+        } catch (KTVException e) {
+            model.addAttribute("succeed", false);
+            model.addAttribute("msg", e.getMessage());
+            return "vipAdd";
+        }
+        model.addAttribute("succeed", true);
+        model.addAttribute("msg", result.getMessage());
         return "vipAdd";
     }
 
