@@ -64,5 +64,8 @@
     <orderEntry type="library" name="Maven: com.dyuproject.protostuff:protostuff-runtime:1.0.8" level="project" />
     <orderEntry type="library" name="Maven: com.dyuproject.protostuff:protostuff-collectionschema:1.0.8" level="project" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="html5" level="application" />
+    <orderEntry type="library" name="respond" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
 </module>

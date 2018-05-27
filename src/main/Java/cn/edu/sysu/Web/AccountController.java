@@ -1,7 +1,9 @@
 package cn.edu.sysu.Web;
 
+import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.Food;
 import cn.edu.sysu.Entity.Order;
+import cn.edu.sysu.Exception.KTVException;
 import cn.edu.sysu.Service.FoodService;
 import cn.edu.sysu.Service.OrderService;
 import org.slf4j.Logger;
@@ -80,6 +82,29 @@ public class AccountController {
 
     @RequestMapping(value = "/food/add", method = RequestMethod.GET)
     public String addFood() {
+        return "foodAdd";
+    }
+
+    @RequestMapping(value = "/food/add")
+    public String doFoodAdd(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String foodName = request.getParameter("name");
+        String foodPrice = request.getParameter("price");
+        String foodStock = request.getParameter("number");
+        Food food = new Food();
+        food.setFname(foodName);
+        food.setPrice(Double.parseDouble(foodPrice));
+        food.setStock(Integer.parseInt(foodStock));
+        OperationStatus result;
+        try {
+            result = foodService.addFood(food);
+        } catch (KTVException e) {
+            model.addAttribute("succeed", false);
+            model.addAttribute("msg", e.getMessage());
+            return "foodAdd";
+        }
+        model.addAttribute("succeed", true);
+        model.addAttribute("msg", result.getMessage());
         return "foodAdd";
     }
 

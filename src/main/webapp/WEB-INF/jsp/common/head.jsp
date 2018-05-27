@@ -17,7 +17,7 @@
 <!-- ace styles -->
 <link rel="stylesheet" href="<c:url value="/assets/css/ace.min.css"/>"/>
 <link rel="stylesheet" href="<c:url value="/assets/css/ace-rtl.min.css"/>"/>
-<link rel="stylesheet" href="<c:url value="/assets/css/ace-skins.min.css"/>" />
+<link rel="stylesheet" href="<c:url value="/assets/css/ace-skins.min.css"/>"/>
 
 <!--[if lte IE 8]>
 <link rel="stylesheet" href="/assets/css/ace-ie.min.css"/>

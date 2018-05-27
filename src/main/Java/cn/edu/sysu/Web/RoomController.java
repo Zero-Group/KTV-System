@@ -1,6 +1,8 @@
 package cn.edu.sysu.Web;
 
+import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.Room;
+import cn.edu.sysu.Exception.KTVException;
 import cn.edu.sysu.Service.RoomService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +57,7 @@ public class RoomController {
         request.setCharacterEncoding("UTF-8");
         String keyWord = request.getParameter("key");
 
-        if (keyWord.length() == 1) {
+        if (keyWord.length() == 1 && String.valueOf(keyWord.charAt(0)).equals("空")) {
             List<Room> result = roomService.queryEmptyRoom();
             if (result == null) {
                 model.addAttribute("msg", "未查询到空房间！");
@@ -68,7 +70,7 @@ public class RoomController {
         } else if (keyWord.length() == 2 && String.valueOf(keyWord.charAt(0)).equals("空")) {
             List<Room> result = roomService.queryEmptyRoomByType(String.valueOf(keyWord.charAt(1)));
             if (result == null) {
-                model.addAttribute("msg", "未查询到空房间！");
+                model.addAttribute("msg", "未查询到类型为" + String.valueOf(keyWord.charAt(1)) + "空房间！");
                 return "roomQuery";
             }
             model.addAttribute("list", result);
@@ -93,6 +95,27 @@ public class RoomController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addRoom() {
+        return "roomAdd";
+    }
+
+    @RequestMapping(value = "/add")
+    public String doRoomAdd(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String roomType = request.getParameter("roomType");
+        String roomNum = request.getParameter("roomNum");
+        Room room = new Room();
+        room.setType(roomType);
+        room.setId(Integer.parseInt(roomNum));
+        OperationStatus result;
+        try {
+            result = roomService.addRoom(room);
+        } catch (KTVException e) {
+            model.addAttribute("succeed", false);
+            model.addAttribute("msg", e.getMessage());
+            return "roomAdd";
+        }
+        model.addAttribute("succeed", true);
+        model.addAttribute("msg", result.getMessage());
         return "roomAdd";
     }
 
