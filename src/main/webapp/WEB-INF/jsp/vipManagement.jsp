@@ -91,7 +91,57 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
+                        <h1>
+                            会员管理系统
+                        </h1>
+                        <div class="col-sm-5">
+                            <div class="row">
+                                <div class="col-xs-10 label label-lg label-success arrowed-in arrowed-right">
+                                    <b>会员系统注意事项</b>
+                                </div>
+                            </div>
 
+                            <div>
+                                <ul class="list-unstyled  spaced">
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        会员注册必须包括姓名和手机号
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        会员可以通过手机号或者姓名最直接查询
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        会员注册姓名不得重复，如有重复请在最后添加序号加以区分，与手机号一一绑定
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        会员手机号应是9位。
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        会员注册后信息不能修改，如需修改应该删除该账号重新注册
+                                    </li>
+
+                                    <li class="divider"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-5" style="float:right;">
+                            <canvas id="canvas" width="500" height="500">cccc</canvas>
+
+                            <div style="text-align:center;clear:both">
+                                <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+                                <script src="/follow.js" type="text/javascript"></script>
+                            </div>
+
+                            <script src="assets/js/clock2.js"></script>
+                        </div>
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
                 </div><!-- /.row -->

@@ -5,6 +5,7 @@
   Time: 22:01
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="common/tag.jsp" %>
 <html>
@@ -72,20 +73,93 @@
         </div>
 
         <div class="main-content">
-            <div class="breadcrumbs" id="breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <i class="icon-home home-icon"></i>
-                        <a href="<c:url value="/ktv"/>">主页</a>
-                    </li>
-                    <li class="active">账目管理</li>
-                </ul><!-- .breadcrumb -->
-            </div>
-
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
+                        <div class="page-content">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <!-- PAGE CONTENT BEGINS -->
+                                    <h1>
+                                        账目管理系统
+                                    </h1>
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-3 pricing-box">
+                                            <div class="widget-box">
+                                                <div class="widget-header header-color-dark">
+                                                    <h5 class="bigger lighter">食物管理</h5>
+                                                </div>
+
+                                                <div class="widget-body">
+                                                    <div class="widget-main">
+                                                        <ul class="list-unstyled spaced2">
+                                                            <li>
+                                                                <i class="icon-ok green"></i>
+                                                                包含食物名称，数量，以及剩余状况
+                                                            </li>
+
+                                                            <li>
+                                                                <i class="icon-ok green"></i>
+                                                                进货时，请及时通过本系统增加货物
+                                                            </li>
+
+                                                            <li>
+                                                                <i class="icon-ok green"></i>
+                                                                提供有查询功能
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-6 col-sm-3 pricing-box">
+                                            <div class="widget-box">
+                                                <div class="widget-header header-color-orange">
+                                                    <h5 class="bigger lighter">订单管理</h5>
+                                                </div>
+
+                                                <div class="widget-body">
+                                                    <div class="widget-main">
+                                                        <ul class="list-unstyled spaced2">
+                                                            <li>
+                                                                <i class="icon-ok green"></i>
+                                                                提供账单列表和指定查询功能
+                                                            </li>
+
+                                                            <li>
+                                                                <i class="icon-ok green"></i>
+                                                                账单由系统生成，无需手动修改
+                                                            </li>
+
+                                                            <li>
+                                                                <i class="icon-ok green"></i>
+                                                                所有账单都将被自动保存
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-5" style="float:right;">
+                                            <canvas id="canvas" width="500" height="500">cccc</canvas>
+
+                                            <div style="text-align:center;clear:both">
+                                                <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+                                                <script src="/follow.js" type="text/javascript"></script>
+                                            </div>
+
+                                            <script src="assets/js/clock2.js"></script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- PAGE CONTENT ENDS -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.page-content -->
 
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->

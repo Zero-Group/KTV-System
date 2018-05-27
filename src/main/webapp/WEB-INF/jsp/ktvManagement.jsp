@@ -124,15 +124,14 @@
 
                                         <div id="calendar"></div>
                                     </div>
-                                    <div class="col-sm-5">
-                                        <canvas id="canvas" width="500" height="500">cccc</canvas>
+                                    <div class="col-sm-5" style="float:right;">
+                                        <canvas id="canvas" width="500" height="500">c</canvas>
 
                                         <div style="text-align:center;clear:both">
-                                            <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
-                                            <script src="/follow.js" type="text/javascript"></script>
+
                                         </div>
 
-                                        <script src="assets/js/clock.js"></script>
+                                        <script src="<c:url value="/assets/js/clock2.js"/>"></script>
                                     </div>
                                 </div>
 
