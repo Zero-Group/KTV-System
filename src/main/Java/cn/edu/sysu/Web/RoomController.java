@@ -57,7 +57,7 @@ public class RoomController {
         request.setCharacterEncoding("UTF-8");
         String keyWord = request.getParameter("key");
 
-        if (keyWord.length() == 1) {
+        if (keyWord.length() == 1 && String.valueOf(keyWord.charAt(0)).equals("空")) {
             List<Room> result = roomService.queryEmptyRoom();
             if (result == null) {
                 model.addAttribute("msg", "未查询到空房间！");
@@ -70,7 +70,7 @@ public class RoomController {
         } else if (keyWord.length() == 2 && String.valueOf(keyWord.charAt(0)).equals("空")) {
             List<Room> result = roomService.queryEmptyRoomByType(String.valueOf(keyWord.charAt(1)));
             if (result == null) {
-                model.addAttribute("msg", "未查询到空房间！");
+                model.addAttribute("msg", "未查询到类型为" + String.valueOf(keyWord.charAt(1)) + "空房间！");
                 return "roomQuery";
             }
             model.addAttribute("list", result);

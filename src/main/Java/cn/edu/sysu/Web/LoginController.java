@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * Project name: KTV-System
  * Package name: cn.edu.sysu.Web
  * Created by lihan on 2018/5/10
- * Description:
+ * Description: 关于Login的Controller，用于登录验证
  */
 @Controller
 @RequestMapping("")
@@ -27,7 +27,7 @@ public class LoginController {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         if (username == null || username.equals("")) {
-            model.addAttribute("msg", "请输入管理员信息");
+            model.addAttribute("msg", "");
             return "login";
         }
         Manager manager = managerDao.getManager(username);
@@ -39,8 +39,15 @@ public class LoginController {
             model.addAttribute("msg", "密码错误！");
             return "login";
         }
-
+        request.getSession().setAttribute("user", manager);
         return "success";
+    }
+
+    @RequestMapping("logout")
+    public String logout(HttpServletRequest request, Model model) {
+        request.getSession().setAttribute("user", null);
+        model.addAttribute("msg", "已退出登录！");
+        return "login";
     }
 
     @RequestMapping("/ktv")
