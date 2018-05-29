@@ -68,33 +68,15 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <div class="alert alert-block alert-success">
-                            <button type="button" class="close" data-dismiss="alert">
-                                <i class="icon-remove"></i>
-                            </button>
 
-                            <i class="icon-ok green"></i>
-                            您好，管理员，欢迎使用ktv管理系统（商家端）
+                        <div class="col-sm-6">
+                            <div id="calendar"></div>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <!-- PAGE CONTENT BEGINS -->
+                        <div class="col-sm-6">
+                            <canvas id="canvas" width="500" height="500">c</canvas>
+                            <script src="<c:url value="/assets/js/clock.js"/>"></script>
+                        </div>
 
-                                <div class="row">
-                                    <div class="col-sm-7">
-                                        <div class="space"></div>
-
-                                        <div id="calendar"></div>
-                                    </div>
-                                    <div class="col-sm-5" style="float:right;">
-                                        <canvas id="canvas" width="500" height="500">c</canvas>
-                                        <script src="<c:url value="/assets/js/clock2.js"/>"></script>
-                                    </div>
-                                </div>
-
-                                <!-- PAGE CONTENT ENDS -->
-                            </div><!-- /.col -->
-                        </div><!-- /.row -->
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -120,25 +102,24 @@
 
 <!--[if !IE]> -->
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js'>" + "<" + "/script>");
 </script>
 <!-- <![endif]-->
 
 <!--[if IE]>
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js'>" + "<" + "/script>");
 </script>
 <![endif]-->
 
 <script type="text/javascript">
     if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
-<script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
 
 <!-- page specific plugin scripts -->
-<script src="<c:url value="/assets/js/jquery-ui-1.10.3.custom.min.js"/>"></script>
-<script src="<c:url value="/assets/js/jquery.ui.touch-punch.min.js"/>"></script>
+<script src="<c:url value="https://cdn.bootcss.com/jqueryui/1.10.3/jquery-ui.min.js"/>"></script>
 <script src="<c:url value="/assets/js/fullcalendar.min.js"/>"></script>
 <script src="<c:url value="/assets/js/bootbox.min.js"/>"></script>
 
@@ -150,27 +131,6 @@
 
 <script type="text/javascript">
     jQuery(function ($) {
-
-        /* initialize the external events
-            -----------------------------------------------------------------*/
-        $('#external-events div.external-event').each(function () {
-            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-            // it doesn't need to have a start or end
-            var eventObject = {
-                title: $.trim($(this).text()) // use the element's text as the event title
-            };
-
-            // store the Event Object in the DOM element so we can get to it later
-            $(this).data('eventObject', eventObject);
-
-            // make the event draggable using jQuery UI
-            $(this).draggable({
-                zIndex: 999,
-                revert: true,      // will cause the event to go back to its
-                revertDuration: 0  //  original position after the drag
-            });
-
-        });
 
         /* initialize the calendar
         -----------------------------------------------------------------*/

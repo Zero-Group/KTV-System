@@ -103,13 +103,13 @@ public class FoodServiceIpml implements FoodService {
 
     @Override
     @Transactional
-    public OperationStatus changePrice(String fname, int newPrice) throws KTVException {
+    public OperationStatus changePrice(String fname, double newPrice) throws KTVException {
         try {
             if (foodDao.queryFoodByFName(fname) == null) {
                 throw new FoodException("该食物不存在！");
             }
             if (newPrice <= 0) {
-                throw new FoodException("价格不合法！");
+                throw new FoodException("新的价格不合法！");
             }
             foodDao.changePrice(fname, newPrice);
             return new OperationStatus("修改食物价格成功！");

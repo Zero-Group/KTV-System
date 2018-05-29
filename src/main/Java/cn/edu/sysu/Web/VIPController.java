@@ -102,6 +102,41 @@ public class VIPController {
         return "vipAdd";
     }
 
+    @RequestMapping(value = "/delete")
+    public String doVIPDelete(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String cname = request.getParameter("cname");
+        try {
+            vipService.deleteVIP(cname);
+        } catch (KTVException e) {
+            model.addAttribute("msg", e.getMessage());
+            return "redirect:/vip/all";
+        }
+        return "redirect:/vip/all";
+    }
+
+    @RequestMapping(value = "/changename")
+    public String doVIPChange(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String newname = request.getParameter("newname");
+        String id = request.getParameter("id");
+        VIP vip = vipService.queryVIPById(Integer.parseInt(id));
+        OperationStatus result;
+        try {
+            result = vipService.changeName(Integer.parseInt(id), newname);
+            vip = vipService.queryVIPByName(newname);
+        } catch (KTVException e) {
+            model.addAttribute("vip", vip);
+            model.addAttribute("succeed", false);
+            model.addAttribute("msg", e.getMessage());
+            return "vipDetail";
+        }
+        model.addAttribute("vip", vip);
+        model.addAttribute("succeed", true);
+        model.addAttribute("msg", result.getMessage());
+        return "vipDetail";
+    }
+
     @RequestMapping(value = "/id={id}/detail", method = RequestMethod.GET)
     public String VIPByPhone(@PathVariable("id") Integer id, Model model) {
         if (id == null) {

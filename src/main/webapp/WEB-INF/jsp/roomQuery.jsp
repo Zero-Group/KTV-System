@@ -178,7 +178,7 @@
 <script type="text/javascript">
     if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
-<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
 
 <!-- page specific plugin scripts -->

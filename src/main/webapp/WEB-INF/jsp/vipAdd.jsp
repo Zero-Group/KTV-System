@@ -132,7 +132,7 @@
                                                     <div class="col-xs-12 col-sm-2">
                                                         <div class="clearfix">
                                                             <input type="text" name="cname" id="cname" class="width-100"
-                                                                   placeholder="输入4 ~ 12个字符" title=""/>
+                                                                   placeholder="输入2 ~ 12个字符" title=""/>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-5"></div>
@@ -251,7 +251,7 @@
 <script type="text/javascript">
     if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
-<script src="<c:url value="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"/>"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
 
 <!-- page specific plugin scripts -->
@@ -287,7 +287,7 @@
 
         $.validator.addMethod("mobile", function (value, element) {
             var length = value.length;
-            var mobile = /^(((13[0-9])|(15[0-9]))+\d{8})$/;
+            var mobile = /^(((13[0-9])|(15[0-9])|(18[0-9]))+\d{8})$/;
             return this.optional(element) || (length === 11 && mobile.test(value));
         }, "电话号码格式错误！");
 
@@ -298,7 +298,7 @@
             rules: {
                 cname: {
                     required: true,
-                    rangelength: [4, 12]
+                    rangelength: [2, 12]
                 },
                 phone: {
                     required: true,

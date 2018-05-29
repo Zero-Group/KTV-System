@@ -108,6 +108,63 @@ public class AccountController {
         return "foodAdd";
     }
 
+    @RequestMapping(value = "/food/delete")
+    public String doFoodDelete(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String fname = request.getParameter("fname");
+        try {
+            foodService.deleteFood(fname);
+        } catch (KTVException e) {
+            model.addAttribute("msg", e.getMessage());
+            return "redirect:/account/food/all";
+        }
+        return "redirect:/account/food/all";
+    }
+
+    @RequestMapping(value = "/food/changeprice")
+    public String doFoodChangePrice(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String fname = request.getParameter("fname");
+        String newprice = request.getParameter("newprice");
+        OperationStatus result;
+        Food food = foodService.queryFoodByFName(fname);
+        try {
+            result = foodService.changePrice(fname, Double.parseDouble(newprice));
+            food = foodService.queryFoodByFName(fname);
+        } catch (KTVException e) {
+            model.addAttribute("food", food);
+            model.addAttribute("succeed", false);
+            model.addAttribute("msg", e.getMessage());
+            return "foodDetail";
+        }
+        model.addAttribute("food", food);
+        model.addAttribute("succeed", true);
+        model.addAttribute("msg", result.getMessage());
+        return "foodDetail";
+    }
+
+    @RequestMapping(value = "/food/increase")
+    public String doFoodIncrease(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String fname = request.getParameter("fname");
+        String increase = request.getParameter("increase");
+        OperationStatus result;
+        Food food = foodService.queryFoodByFName(fname);
+        try {
+            result = foodService.increaseStock(fname, Integer.parseInt(increase));
+            food = foodService.queryFoodByFName(fname);
+        } catch (KTVException e) {
+            model.addAttribute("food", food);
+            model.addAttribute("succeed", false);
+            model.addAttribute("msg", e.getMessage());
+            return "foodDetail";
+        }
+        model.addAttribute("food", food);
+        model.addAttribute("succeed", true);
+        model.addAttribute("msg", result.getMessage());
+        return "foodDetail";
+    }
+
     @RequestMapping(value = "/food/id={id}/detail", method = RequestMethod.GET)
     public String foodDetail(@PathVariable("id") Integer id, Model model) {
         if (id == null) {
@@ -154,11 +211,6 @@ public class AccountController {
         model.addAttribute("rows", Math.ceil(result.size() / 6.0));
         model.addAttribute("title", "查询结果");
         return "orderList";
-    }
-
-    @RequestMapping(value = "/order/add", method = RequestMethod.GET)
-    public String addOrder() {
-        return "orderAdd";
     }
 
     @RequestMapping(value = "/order/id={id}/detail", method = RequestMethod.GET)

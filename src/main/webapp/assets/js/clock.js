@@ -4,7 +4,7 @@ var ctx = canvas.getContext("2d");
 ctx.strokeStyle = 'rgb(20,68,106)';
 ctx.lineWidth = 17;
 ctx.shadowBlur= 15;
-ctx.shadowColor = 'rgb(20,68,106)'
+ctx.shadowColor = 'rgb(20,68,106)';
 
 function degToRad(degree){
     var factor = Math.PI/180;
@@ -43,7 +43,7 @@ function renderTime(){
     ctx.stroke();
     //Date
     ctx.font = "25px Helvetica";
-    ctx.fillStyle = 'rgba(3,38,58,1)'
+    ctx.fillStyle = 'rgba(3,38,58,1)';
     ctx.fillText(today, 175, 250);
     //Time
     ctx.font = "25px Helvetica Bold";

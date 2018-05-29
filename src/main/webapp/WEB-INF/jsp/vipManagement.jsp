@@ -91,10 +91,9 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <h1>
-                            会员管理系统
-                        </h1>
-                        <div class="col-sm-5">
+
+                        <div class="col-sm-6">
+                            <h1>会员管理系统</h1>
                             <div class="row">
                                 <div class="col-xs-10 label label-lg label-success arrowed-in arrowed-right">
                                     <b>会员系统注意事项</b>
@@ -120,7 +119,7 @@
 
                                     <li>
                                         <i class="icon-caret-right green"></i>
-                                        会员手机号应是9位。
+                                        会员手机号应是11位。
                                     </li>
 
                                     <li>
@@ -132,11 +131,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-sm-5" style="float:right;">
+                        <div class="col-sm-6">
                             <canvas id="canvas" width="500" height="500"></canvas>
-
-                            <script src="<c:url value="/assets/js/clock2.js"/>"></script>
+                            <script src="<c:url value="/assets/js/clock.js"/>"></script>
                         </div>
+
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -163,20 +162,20 @@
 
 <!--[if !IE]> -->
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js'>" + "<" + "/script>");
 </script>
 <!-- <![endif]-->
 
 <!--[if IE]>
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js'>" + "<" + "/script>");
 </script>
 <![endif]-->
 
 <script type="text/javascript">
     if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
-<script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
 
 <!-- page specific plugin scripts -->

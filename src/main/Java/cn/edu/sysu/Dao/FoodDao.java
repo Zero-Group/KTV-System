@@ -54,7 +54,7 @@ public interface FoodDao {
      * @param newPrice 新的价格
      * @return 修改数据库的行数
      */
-    int changePrice(@Param("fname") String fname, @Param("price") int newPrice);
+    int changePrice(@Param("fname") String fname, @Param("price") double newPrice);
 
     /**
      * 查询所有食物的价格、库存量等信息

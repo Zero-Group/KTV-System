@@ -90,136 +90,137 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <h1>
-                            房间价目与基础服务
-                        </h1>
-                        <div class="row">
-                            <div class="col-xs-5 col-sm-2 pricing-box">
-                                <div class="widget-box">
-                                    <div class="widget-header header-color-dark">
-                                        <h5 class="bigger lighter">Small room</h5>
+
+                        <div class="col-sm-6">
+                            <h1>房间价目与基础服务</h1>
+                            <div class="row">
+                                <div class="col-sm-4 pricing-box">
+                                    <div class="widget-box">
+                                        <div class="widget-header header-color-dark">
+                                            <h5 class="bigger lighter">Small room</h5>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <ul class="list-unstyled spaced2">
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        适合3-4人使用（不得超过五人）
+                                                    </li>
+
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        不含饮料小吃
+                                                    </li>
+
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        节假日加收20%服务费
+                                                    </li>
+
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        连续订5小时后，第六小时起按半价
+                                                    </li>
+                                                </ul>
+
+                                                <hr>
+                                                <div class="price">
+                                                    计时收费：¥80
+                                                    <small>/hour</small>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div class="widget-body">
-                                        <div class="widget-main">
-                                            <ul class="list-unstyled spaced2">
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    适合3-4人使用（不得超过五人）
-                                                </li>
+                                <div class="col-sm-4 pricing-box">
+                                    <div class="widget-box">
+                                        <div class="widget-header header-color-orange">
+                                            <h5 class="bigger lighter">Middle Room</h5>
+                                        </div>
 
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    不含饮料小吃
-                                                </li>
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <ul class="list-unstyled spaced2">
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        适合6-20人使用（不得超过12人）
+                                                    </li>
 
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    节假日加收20%服务费
-                                                </li>
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        随机附赠饮料半打,小吃5份
+                                                    </li>
 
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    连续订5小时后，第六小时起按半价
-                                                </li>
-                                            </ul>
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        节假日加收20%服务费
+                                                    </li>
 
-                                            <hr>
-                                            <div class="price">
-                                                计时收费：¥80
-                                                <small>/hour</small>
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        连续订5小时后，第六小时起按半价收费
+                                                    </li>
+                                                </ul>
+
+                                                <hr>
+                                                <div class="price">
+                                                    计时收费：¥130
+                                                    <small>/hour</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4 pricing-box">
+                                    <div class="widget-box">
+                                        <div class="widget-header header-color-blue">
+                                            <h5 class="bigger lighter">Large Room</h5>
+                                        </div>
+
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <ul class="list-unstyled spaced2">
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        适合20人以上使用（不得超过30人）
+                                                    </li>
+
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        附赠啤酒一箱，小吃8份
+                                                    </li>
+
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        节假日加收20%服务费
+                                                    </li>
+
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        连续订5小时后，第六小时起按半价收费
+                                                    </li>
+                                                </ul>
+
+                                                <hr>
+                                                <div class="price">
+                                                    计时收费：¥200
+                                                    <small>/hour</small>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-xs-5 col-sm-2 pricing-box">
-                                <div class="widget-box">
-                                    <div class="widget-header header-color-orange">
-                                        <h5 class="bigger lighter">Middle Room</h5>
-                                    </div>
-
-                                    <div class="widget-body">
-                                        <div class="widget-main">
-                                            <ul class="list-unstyled spaced2">
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    适合6-20人使用（不得超过12人）
-                                                </li>
-
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    随机附赠饮料半打,小吃5份
-                                                </li>
-
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    节假日加收20%服务费
-                                                </li>
-
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    连续订5小时后，第六小时起按半价收费
-                                                </li>
-                                            </ul>
-
-                                            <hr>
-                                            <div class="price">
-                                                计时收费：¥130
-                                                <small>/hour</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-5 col-sm-2 pricing-box">
-                                <div class="widget-box">
-                                    <div class="widget-header header-color-blue">
-                                        <h5 class="bigger lighter">Large Room</h5>
-                                    </div>
-
-                                    <div class="widget-body">
-                                        <div class="widget-main">
-                                            <ul class="list-unstyled spaced2">
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    适合20人以上使用（不得超过30人）
-                                                </li>
-
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    附赠啤酒一箱，小吃8份
-                                                </li>
-
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    节假日加收20%服务费
-                                                </li>
-
-                                                <li>
-                                                    <i class="icon-ok green"></i>
-                                                    连续订5小时后，第六小时起按半价收费
-                                                </li>
-                                            </ul>
-
-                                            <hr>
-                                            <div class="price">
-                                                计时收费：¥200
-                                                <small>/hour</small>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-sm-5" style="float:right;">
-                                <canvas id="canvas" width="500" height="500"></canvas>
-                                <script src="<c:url value="/assets/js/clock2.js"/>"></script>
-                            </div>
                         </div>
+                        <div class="col-sm-6">
+                            <canvas id="canvas" width="500" height="500"></canvas>
+                            <script src="<c:url value="/assets/js/clock.js"/>"></script>
+                        </div>
+
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -246,20 +247,20 @@
 
 <!--[if !IE]> -->
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js'>" + "<" + "/script>");
 </script>
 <!-- <![endif]-->
 
 <!--[if IE]>
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js'>" + "<" + "/script>");
 </script>
 <![endif]-->
 
 <script type="text/javascript">
     if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
-<script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
 
 <!-- page specific plugin scripts -->

@@ -69,90 +69,89 @@
                     </ul>
                 </li>
             </ul><!-- /.nav-list -->
-
         </div>
 
         <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        <a href="<c:url value="/ktv"/>">主页</a>
+                    </li>
+                    <li class="active">账目管理</li>
+                </ul><!-- .breadcrumb -->
+            </div>
+
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <div class="page-content">
+
+                        <div class="col-sm-6">
                             <div class="row">
-                                <div class="col-xs-12">
-                                    <!-- PAGE CONTENT BEGINS -->
-                                    <h1>
-                                        账目管理系统
-                                    </h1>
-                                    <div class="row">
-                                        <div class="col-xs-6 col-sm-3 pricing-box">
-                                            <div class="widget-box">
-                                                <div class="widget-header header-color-dark">
-                                                    <h5 class="bigger lighter">食物管理</h5>
-                                                </div>
-
-                                                <div class="widget-body">
-                                                    <div class="widget-main">
-                                                        <ul class="list-unstyled spaced2">
-                                                            <li>
-                                                                <i class="icon-ok green"></i>
-                                                                包含食物名称，数量，以及剩余状况
-                                                            </li>
-
-                                                            <li>
-                                                                <i class="icon-ok green"></i>
-                                                                进货时，请及时通过本系统增加货物
-                                                            </li>
-
-                                                            <li>
-                                                                <i class="icon-ok green"></i>
-                                                                提供有查询功能
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <h1>账目管理系统</h1>
+                                <div class="col-sm-6 pricing-box">
+                                    <div class="widget-box">
+                                        <div class="widget-header header-color-dark">
+                                            <h5 class="bigger lighter">食物管理</h5>
                                         </div>
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <ul class="list-unstyled spaced2">
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        包含食物名称，数量，以及剩余状况
+                                                    </li>
 
-                                        <div class="col-xs-6 col-sm-3 pricing-box">
-                                            <div class="widget-box">
-                                                <div class="widget-header header-color-orange">
-                                                    <h5 class="bigger lighter">订单管理</h5>
-                                                </div>
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        进货时，请及时通过本系统增加货物
+                                                    </li>
 
-                                                <div class="widget-body">
-                                                    <div class="widget-main">
-                                                        <ul class="list-unstyled spaced2">
-                                                            <li>
-                                                                <i class="icon-ok green"></i>
-                                                                提供账单列表和指定查询功能
-                                                            </li>
-
-                                                            <li>
-                                                                <i class="icon-ok green"></i>
-                                                                账单由系统生成，无需手动修改
-                                                            </li>
-
-                                                            <li>
-                                                                <i class="icon-ok green"></i>
-                                                                所有账单都将被自动保存
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        提供有查询功能
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        </div>
-
-                                        <div class="col-sm-5" style="float:right;">
-                                            <canvas id="canvas" width="500" height="500"></canvas>
-                                            <script src="<c:url value="/assets/js/clock2.js"/>"></script>
                                         </div>
                                     </div>
-                                    <!-- PAGE CONTENT ENDS -->
-                                </div><!-- /.col -->
-                            </div><!-- /.row -->
-                        </div><!-- /.page-content -->
+                                </div>
+
+                                <div class="col-sm-6 pricing-box">
+                                    <div class="widget-box">
+                                        <div class="widget-header header-color-orange">
+                                            <h5 class="bigger lighter">订单管理</h5>
+                                        </div>
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                <ul class="list-unstyled spaced2">
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        提供账单列表和指定查询功能
+                                                    </li>
+
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        账单由系统生成，无需手动修改
+                                                    </li>
+
+                                                    <li>
+                                                        <i class="icon-ok green"></i>
+                                                        所有账单都将被自动保存
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <canvas id="canvas" width="500" height="500"></canvas>
+                            <script src="<c:url value="/assets/js/clock.js"/>"></script>
+                        </div>
 
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
@@ -180,20 +179,20 @@
 
 <!--[if !IE]> -->
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js'>" + "<" + "/script>");
 </script>
 <!-- <![endif]-->
 
 <!--[if IE]>
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js'>" + "<" + "/script>");
 </script>
 <![endif]-->
 
 <script type="text/javascript">
     if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 </script>
-<script src="<c:url value="/assets/js/bootstrap.min.js"/>"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
 
 <!-- page specific plugin scripts -->

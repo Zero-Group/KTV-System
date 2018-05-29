@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -132,6 +134,30 @@ public class RoomController {
         model.addAttribute("room", room);
         model.addAttribute("title", "房间详情");
         return "roomDetail";
+    }
+
+    @RequestMapping(value = "/booking")
+    public String bookingRoom(HttpServletRequest request, Model model) throws UnsupportedEncodingException, ParseException {
+        request.setCharacterEncoding("UTF-8");
+        String roomType = request.getParameter("roomType");
+        String roomNum = request.getParameter("roomNum");
+        String startTime = request.getParameter("startTime");
+        String hours = request.getParameter("hours");
+        Room room = new Room();
+        room.setType(roomType);
+        room.setId(Integer.parseInt(roomNum));
+        OperationStatus result;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            result = roomService.bookingRoom(Integer.parseInt(roomNum), roomType, format.parse(startTime), Integer.parseInt(hours));
+        } catch (KTVException e) {
+            model.addAttribute("succeed", false);
+            model.addAttribute("msg", e.getMessage());
+            return "roomAdd";
+        }
+        model.addAttribute("succeed", true);
+        model.addAttribute("msg", result.getMessage());
+        return "roomAdd";
     }
 
 }

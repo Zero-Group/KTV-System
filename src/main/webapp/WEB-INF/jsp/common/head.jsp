@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- basic styles -->
-<link rel="stylesheet" href="<c:url value="/assets/css/bootstrap.min.css"/>"/>
+<link rel="stylesheet" href="<c:url value="https://cdn.bootcss.com/bootstrap/3.0.0/css/bootstrap.min.css"/>"/>
 <link rel="stylesheet" href="<c:url value="/assets/css/font-awesome.min.css"/>"/>
 
 <!--[if IE 7]>
@@ -28,5 +28,5 @@
 
 <!--[if lt IE 9]>
 <script src="/assets/js/html5shiv.js"></script>
-<script src="/assets/js/respond.min.js"></script>
+<script src="https://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->

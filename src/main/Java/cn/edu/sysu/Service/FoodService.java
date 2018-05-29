@@ -55,7 +55,7 @@ public interface FoodService {
      * @param newPrice 新的价格
      * @return 返回修改价格的结果
      */
-    OperationStatus changePrice(String fname, int newPrice);
+    OperationStatus changePrice(String fname, double newPrice);
 
     /**
      * 查询所有食物的价格、库存量等信息
