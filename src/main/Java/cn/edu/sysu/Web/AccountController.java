@@ -3,11 +3,12 @@ package cn.edu.sysu.Web;
 import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.Food;
 import cn.edu.sysu.Entity.Order;
+import cn.edu.sysu.Entity.OrderDetail;
 import cn.edu.sysu.Exception.KTVException;
 import cn.edu.sysu.Service.FoodService;
 import cn.edu.sysu.Service.OrderService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -29,8 +31,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/account")
 public class AccountController {
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private FoodService foodService;
@@ -214,7 +214,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/order/id={id}/detail", method = RequestMethod.GET)
-    public String orderDetail(@PathVariable("id") Integer id, Model model) {
+    public String orderDetail(@PathVariable("id") Integer id, Model model) throws IOException {
         if (id == null) {
             return "redirect:/account/order/all";
         }
@@ -222,6 +222,12 @@ public class AccountController {
         if (order == null) {
             return "redirect:/account/order/all";
         }
+        ObjectMapper mapper = new ObjectMapper();
+        String orderDetail = order.getDetail();
+        List<OrderDetail> detailList = mapper
+                .readValue(orderDetail, new TypeReference<List<OrderDetail>>() {
+                });
+        model.addAttribute("list", detailList);
         model.addAttribute("order", order);
         model.addAttribute("title", "账单详情");
         return "orderDetail";

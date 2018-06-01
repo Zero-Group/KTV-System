@@ -1,5 +1,7 @@
 package cn.edu.sysu.Entity;
 
+import java.util.Date;
+
 /**
  * Project name: KTV-System
  * Package name: cn.edu.sysu.Entity
@@ -13,9 +15,10 @@ public class Order {
 
     private int id;
     private String room;
+    private Date orderTime;
     private String cname;
     private String phone;
-    private int price;
+    private double price;
     private int pay;
     private String detail;
 
@@ -35,6 +38,14 @@ public class Order {
         this.room = room;
     }
 
+    public Date getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(Date orderTime) {
+        this.orderTime = orderTime;
+    }
+
     public String getCname() {
         return cname;
     }
@@ -51,11 +62,11 @@ public class Order {
         this.phone = phone;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

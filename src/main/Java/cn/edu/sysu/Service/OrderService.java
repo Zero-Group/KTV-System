@@ -2,6 +2,7 @@ package cn.edu.sysu.Service;
 
 import cn.edu.sysu.Dto.OperationStatus;
 import cn.edu.sysu.Entity.Order;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -42,9 +43,18 @@ public interface OrderService {
      * 根据订单编号订单信息
      *
      * @param id 查询订单编号
-     * @return 该V订单信息
+     * @return 订单信息
      */
     Order queryOrderById(int id);
+
+    /**
+     * 根据房间信息以及时间查询订单信息
+     *
+     * @param room      查询订单房间编号
+     * @param orderTime 查询订单时间
+     * @return 订单信息
+     */
+    Order queryOrder(String room, Date orderTime);
 
     /**
      * 查询一个VIP会员的所有订单信息

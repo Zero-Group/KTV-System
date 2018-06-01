@@ -8,8 +8,8 @@
     <insert id="addRoom" parameterType="Room" useGeneratedKeys="true">
         INSERT
         INTO tb_room
-        (id, type, status, start_time, end_time)
-        VALUES (#{id}, #{type}, #{status}, #{startTime}, #{endTime})
+        (id, type, price, status, start_time, end_time)
+        VALUES (#{id}, #{type}, #{price}, #{status}, #{startTime}, #{endTime})
     </insert>
 
     <delete id="deleteRoom">

@@ -1,11 +1,16 @@
 package cn.edu.sysu.Web;
 
 import cn.edu.sysu.Dto.OperationStatus;
+import cn.edu.sysu.Entity.Order;
+import cn.edu.sysu.Entity.OrderDetail;
 import cn.edu.sysu.Entity.Room;
+import cn.edu.sysu.Entity.VIP;
 import cn.edu.sysu.Exception.KTVException;
+import cn.edu.sysu.Service.OrderService;
 import cn.edu.sysu.Service.RoomService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import cn.edu.sysu.Service.VIPService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,10 +35,14 @@ import java.util.List;
 @RequestMapping("/room")
 public class RoomController {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     private RoomService roomService;
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private VIPService vipService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String RoomManagement() {
@@ -107,6 +116,7 @@ public class RoomController {
         String roomNum = request.getParameter("roomNum");
         Room room = new Room();
         room.setType(roomType);
+        room.setPrice(roomType.equals("L") ? 200.0 : roomType.equals("M") ? 130.0 : 80.0);
         room.setId(Integer.parseInt(roomNum));
         OperationStatus result;
         try {
@@ -137,27 +147,76 @@ public class RoomController {
     }
 
     @RequestMapping(value = "/booking")
-    public String bookingRoom(HttpServletRequest request, Model model) throws UnsupportedEncodingException, ParseException {
+    public String bookingRoom(HttpServletRequest request, Model model) throws UnsupportedEncodingException, JsonProcessingException {
         request.setCharacterEncoding("UTF-8");
         String roomType = request.getParameter("roomType");
         String roomNum = request.getParameter("roomNum");
-        String startTime = request.getParameter("startTime");
         String hours = request.getParameter("hours");
-        Room room = new Room();
-        room.setType(roomType);
-        room.setId(Integer.parseInt(roomNum));
+        String cname = request.getParameter("cname");
+        Room room = roomService.queryRoom(Integer.parseInt(roomNum), roomType);
         OperationStatus result;
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
-            result = roomService.bookingRoom(Integer.parseInt(roomNum), roomType, format.parse(startTime), Integer.parseInt(hours));
+            VIP vip = vipService.queryVIPByName(cname);
+            if (vip == null) {
+                throw new KTVException("会员名字错误，请重新输入！");
+            }
+            Date now = new Date();
+            result = roomService.bookingRoom(Integer.parseInt(roomNum), roomType, now, Integer.parseInt(hours));
+            ObjectMapper mapper = new ObjectMapper();
+            OrderDetail roomDetail = new OrderDetail();
+            double unitPrice = roomType.equals("L") ? 200.0 : roomType.equals("M") ? 130.0 : 80.0;
+            roomDetail.setName(roomType + roomNum);
+            roomDetail.setUnitPrice(unitPrice);
+            roomDetail.setNumber(Integer.parseInt(hours));
+            roomDetail.setTotalPrice(unitPrice * Integer.parseInt(hours));
+            List<OrderDetail> detail = new ArrayList<>();
+            detail.add(roomDetail);
+            Order order = new Order();
+            order.setRoom(roomType + roomNum);
+            order.setOrderTime(now);
+            order.setCname(cname);
+            order.setPhone(vip.getPhone());
+            order.setPrice(unitPrice * Integer.parseInt(hours));
+            order.setPay(0);
+            order.setDetail(mapper.writeValueAsString(detail));
+            orderService.addOrder(order);
+            room = roomService.queryRoom(Integer.parseInt(roomNum), roomType);
         } catch (KTVException e) {
             model.addAttribute("succeed", false);
             model.addAttribute("msg", e.getMessage());
-            return "roomAdd";
+            model.addAttribute("room", room);
+            return "roomDetail";
         }
         model.addAttribute("succeed", true);
         model.addAttribute("msg", result.getMessage());
-        return "roomAdd";
+        model.addAttribute("room", room);
+        return "roomDetail";
+    }
+
+    @RequestMapping(value = "/checkout")
+    public String checkoutRoom(HttpServletRequest request, Model model) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("UTF-8");
+        String roomType = request.getParameter("roomType");
+        String roomNum = request.getParameter("roomNum");
+        Room room = roomService.queryRoom(Integer.parseInt(roomNum), roomType);
+        OperationStatus result;
+        try {
+            result = roomService.checkoutRoom(Integer.parseInt(roomNum), roomType);
+            Order order = orderService.queryOrder(roomType + roomNum, room.getStartTime());
+            orderService.payOrder(order.getId());
+            room = roomService.queryRoom(Integer.parseInt(roomNum), roomType);
+        } catch (KTVException e) {
+            model.addAttribute("succeed", false);
+            model.addAttribute("msg", e.getMessage());
+            model.addAttribute("room", room);
+            model.addAttribute("title", "房间详情");
+            return "roomDetail";
+        }
+        model.addAttribute("succeed", true);
+        model.addAttribute("msg", result.getMessage());
+        model.addAttribute("room", room);
+        model.addAttribute("title", "房间详情");
+        return "roomDetail";
     }
 
 }

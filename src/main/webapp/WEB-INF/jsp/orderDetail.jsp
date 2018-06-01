@@ -14,7 +14,7 @@
 </head>
 <body>
 <!-- 页面显示 -->
-<%@include file="common/navbar.jsp"%>
+<%@include file="common/navbar.jsp" %>
 
 <div class="main-container" id="main-container">
 
@@ -109,25 +109,106 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
-                        <div class="widget-box" style="opacity: 1;">
-                            <div class="widget-header">
-                                <h4 class="grey">订单${order.id}</h4>
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <div class="widget-box transparent invoice-box">
+                                    <div class="widget-header widget-header-large">
+                                        <h3 class="grey lighter pull-left position-relative">
+                                            <i class="icon-leaf green"></i>
+                                            订单详情
+                                        </h3>
 
-                                <div class="widget-toolbar">
-                                    <c:choose>
-                                        <c:when test="${order.pay == 0}">
-                                            <span class="label label-danger">未支付</span>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <span class="label label-success">已支付</span>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </div>
+                                        <div class="widget-toolbar no-border invoice-info">
+                                            <span class="invoice-info-label">订单编号:</span>
+                                            <span class="red">${order.id}</span>
+                                        </div>
+                                    </div>
 
-                            <div class="widget-body">
-                                <div class="widget-main padding-2">
-                                    <div class="alert alert-info">顾客：${order.cname}<br>消费金额：<br>${order.price}<br></div>
+                                    <div class="widget-body">
+                                        <div class="widget-main padding-24">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="row">
+                                                        <div class="col-xs-11 label label-lg label-info arrowed-in arrowed-right">
+                                                            <b>房间信息</b>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <ul class="list-unstyled spaced">
+                                                            <li>
+                                                                <i class="icon-caret-right blue"></i>
+                                                                房间编号：${order.room}
+                                                            </li>
+                                                            <li>
+                                                                <i class="icon-caret-right blue"></i>
+                                                                房间价格：${list.get(0).unitPrice}元/时
+                                                            </li>
+                                                            <li>
+                                                                <i class="icon-caret-right blue"></i>
+                                                                消费时长：${list.get(0).number}小时
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div><!-- /span -->
+
+                                                <div class="col-sm-6">
+                                                    <div class="row">
+                                                        <div class="col-xs-11 label label-lg label-success arrowed-in arrowed-right">
+                                                            <b>顾客信息</b>
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <ul class="list-unstyled  spaced">
+                                                            <li>
+                                                                <i class="icon-caret-right green"></i>
+                                                                会员姓名：${order.cname}
+                                                            </li>
+                                                            <li>
+                                                                <i class="icon-caret-right green"></i>
+                                                                会员电话：${order.phone}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div><!-- /span -->
+                                            </div><!-- row -->
+
+                                            <div>
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>条目</th>
+                                                        <th>单价</th>
+                                                        <th>数量</th>
+                                                        <th>总价</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <c:forEach items="${list}" var="detail">
+                                                        <tr>
+                                                            <td>${detail.name}</td>
+                                                            <td>${detail.unitPrice}</td>
+                                                            <td>${detail.number}</td>
+                                                            <td>${detail.totalPrice}</td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="hr hr8 hr-double hr-dotted"></div>
+
+                                            <div class="row">
+                                                <div class="col-sm-5 pull-right">
+                                                    <h4 class="pull-right">
+                                                        总消费金额：
+                                                        <span class="red">${order.price}元</span>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

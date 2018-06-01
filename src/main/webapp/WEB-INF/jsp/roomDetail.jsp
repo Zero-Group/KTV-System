@@ -14,7 +14,7 @@
 </head>
 <body>
 <!-- 页面显示 -->
-<%@include file="common/navbar.jsp"%>
+<%@include file="common/navbar.jsp" %>
 
 <div class="main-container" id="main-container">
 
@@ -95,38 +95,134 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
-                        <div class="widget-box" style="opacity: 1;">
-                            <div class="widget-header">
-                                <h4 class="grey">房间 ${room.type}${room.id}</h4>
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <div class="widget-box transparent invoice-box">
+                                    <div class="widget-header widget-header-large">
+                                        <h3 class="grey lighter pull-left position-relative">
+                                            <i class="icon-home"></i>
+                                            房间 ${room.type}${room.id}
+                                        </h3>
 
-                                <div class="widget-toolbar">
-                                    <c:choose>
-                                        <c:when test="${room.status == 1}">
-                                            <span class="label label-danger">消费</span>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <span class="label label-success">空闲</span>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </div>
+                                        <div class="widget-toolbar no-border invoice-info">
+                                            <span class="invoice-info-label">房间状态:</span>
+                                            <c:choose>
+                                                <c:when test="${room.status == 1}">
+                                                    <span class="label label-danger">消费</span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span class="label label-success">空闲</span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </div>
+                                    </div>
 
-                            <div class="widget-body">
-                                <div class="widget-main padding-2">
-                                    <c:choose>
-                                        <c:when test="${room.status == 1}">
-                                            <div class="alert alert-info">
-                                                时间：<br>
-                                                <fmt:formatDate pattern="yyyy-MM-dd hh:mm"
-                                                                value="${room.startTime}"/><br>
-                                                <fmt:formatDate pattern="yyyy-MM-dd hh:mm"
-                                                                value="${room.endTime}"/><br>
+                                    <div class="widget-body">
+                                        <div class="widget-main padding-24">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <div class="col-xs-12 label label-lg label-info arrowed-in arrowed-right">
+                                                        <b>房间信息</b>
+                                                    </div>
+                                                    <hr>
+                                                </div>
                                             </div>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <div class="alert alert-info"><br><br><br></div>
-                                        </c:otherwise>
-                                    </c:choose>
+                                            <div class="row">
+                                                <div class="col-xs-6 pull-left">
+                                                    <i class="icon-caret-right blue"></i>
+                                                    房间编号：${room.type}${room.id}
+                                                    <br>
+                                                    <i class="icon-caret-right blue"></i>
+                                                    房间价格：${room.price}元/时
+                                                </div>
+                                            </div>
+
+                                            <div class="hr hr8 hr-double hr-dotted"></div>
+
+                                            <c:choose>
+                                                <c:when test="${room.status == 1}">
+                                                    <form action="<c:url value="/room/checkout"/>" method="post">
+                                                        <div class="alert alert-info">
+                                                            <div class="row center">
+                                                                消费时间：
+                                                                <i class="icon-time"></i>
+                                                                <fmt:formatDate pattern="yyyy-MM-dd hh:mm"
+                                                                                value="${room.startTime}"/> ~
+                                                                <i class="icon-time"></i>
+                                                                <fmt:formatDate pattern="yyyy-MM-dd hh:mm"
+                                                                                value="${room.endTime}"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row center">
+                                                            <input type="hidden" name="roomType" value="${room.type}"/>
+                                                            <input type="hidden" name="roomNum" value="${room.id}"/>
+                                                            <button class="btn btn-sm btn-info" type="submit">结束使用
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <form id="validation-form" action="<c:url value="/room/booking"/>"
+                                                          method="post">
+                                                        <div class="alert alert-info">
+                                                            <div class="row center">
+                                                                <span class="input-icon input-icon-right">
+                                                                <span class="blue">消费时长：</span>
+                                                                    <input type="text" id="hours" name="hours" title=""
+                                                                           placeholder="订房小时数(1 ~ 10)">
+                                                                    <i class="icon-time"></i>
+                                                                </span>
+                                                            </div>
+                                                            <br>
+                                                            <div class="row center">
+                                                                <span class="input-icon input-icon-right">
+                                                                <span class="blue">会员名字：</span>
+                                                                    <input type="text" id="cname" name="cname" title=""
+                                                                           placeholder="会员名字">
+                                                                    <i class="icon-user"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row center">
+                                                            <input type="hidden" name="roomType" value="${room.type}"/>
+                                                            <input type="hidden" name="roomNum" value="${room.id}"/>
+                                                            <button class="btn btn-sm btn-info" type="submit">开始使用
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-4"></div>
+                                                <div class="col-xs-12 col-sm-4">
+                                                    <c:choose>
+                                                        <c:when test="${msg == null}">
+                                                        </c:when>
+                                                        <c:when test="${succeed == true}">
+                                                            <div class="alert alert-block alert-success">
+                                                                <button type="button" class="close"
+                                                                        data-dismiss="alert">
+                                                                    <i class="icon-remove"></i>
+                                                                </button>
+                                                                <p><i class="icon-ok"></i>&nbsp;&nbsp;${msg}</p>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <div class="alert alert-block alert-danger">
+                                                                <button type="button" class="close"
+                                                                        data-dismiss="alert">
+                                                                    <i class="icon-remove"></i>
+                                                                </button>
+                                                                <p><i class="icon-bug"></i>&nbsp;&nbsp;${msg}</p>
+                                                            </div>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-4"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -174,9 +270,43 @@
 <script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
 
 <!-- page specific plugin scripts -->
+<script src="<c:url value="/assets/js/jquery.validate.min.js"/>"></script>
 
 <!-- ace scripts -->
 <script src="<c:url value="/assets/js/ace-elements.min.js"/>"></script>
 <script src="<c:url value="/assets/js/ace.min.js"/>"></script>
+
+<script type="text/javascript">
+
+    jQuery(function ($) {
+
+        $('#validation-form').validate({
+            errorElement: 'div',
+            errorClass: 'help-block',
+            focusInvalid: false,
+            rules: {
+                hours: {
+                    required: true,
+                    digits: true,
+                    range: [1, 10]
+                }
+            },
+
+            messages: {
+                hours: "请输入消费时长！"
+            },
+
+            highlight: function (e) {
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            },
+
+            success: function (e) {
+                $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+                $(e).remove();
+            }
+        });
+    })
+
+</script>
 
 </html>

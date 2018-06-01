@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -71,6 +72,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order queryOrderById(int id) {
         return orderDao.queryOrderById(id);
+    }
+
+    @Override
+    public Order queryOrder(String room, Date orderTime) {
+        return orderDao.queryOrder(room, orderTime);
     }
 
     @Override

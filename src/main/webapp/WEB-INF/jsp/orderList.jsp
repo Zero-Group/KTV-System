@@ -113,7 +113,7 @@
                             <div class="row">
                                 <c:forEach items="${list}" var="order" begin="${6*(i-1)}" end="${6*(i-1)+5}">
                                     <div class="col-xs-12 col-sm-2 widget-container-span ui-sortable">
-                                        <a href="/order/id=${order.id}/detail" style="text-decoration: none;">
+                                        <a href="/account/order/id=${order.id}/detail" style="text-decoration: none;">
                                             <div class="widget-box" style="opacity: 1;">
                                                 <div class="widget-header">
                                                     <h4 class="grey">订单${order.id}</h4>

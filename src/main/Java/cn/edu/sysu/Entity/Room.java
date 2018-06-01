@@ -7,13 +7,14 @@ import java.util.Date;
  * Package name: cn.edu.sysu.Entity
  * Created by lihan on 2018/4/7
  * Description: Room的实体类，Room包含id，type，
- * status，startTime，endTime等信息，提供对应的
- * get()、set()方法以及toString方法。
+ * price，status，startTime，endTime等信息，提
+ * 供对应的get()、set()方法以及toString方法。
  */
 public class Room {
 
     private int id;
     private String type;
+    private double price;
     private int status;
     private Date startTime;
     private Date endTime;
@@ -32,6 +33,14 @@ public class Room {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getStatus() {
@@ -63,6 +72,7 @@ public class Room {
         return "Room{" +
                 "id=" + id +
                 ", type='" + type + '\'' +
+                ", price=" + price +
                 ", status=" + status +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
