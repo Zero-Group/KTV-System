@@ -39,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public OperationStatus addOrder(Order order) throws KTVException {
         try {
-            if (roomDao.queryRoom(order.getRoom().charAt(1) - '0', String.valueOf(order.getRoom().charAt(0))) == null) {
+            if (roomDao.queryRoom(Integer.parseInt(order.getRoom().substring(1)), order.getRoom().substring(0, 1)) == null) {
                 throw new OrderException("房间不存在，订单无效！");
             }
             orderDao.addOrder(order);

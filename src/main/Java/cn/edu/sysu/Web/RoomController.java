@@ -89,7 +89,7 @@ public class RoomController {
             model.addAttribute("title", "查询结果");
             return "roomList";
         } else if (keyWord.length() == 2 && !String.valueOf(keyWord.charAt(0)).equals("空")) {
-            Room room = roomService.queryRoom(keyWord.charAt(1) - '0', String.valueOf(keyWord.charAt(0)));
+            Room room = roomService.queryRoom(Integer.parseInt(keyWord.substring(1)), keyWord.substring(0, 1));
             if (room == null) {
                 model.addAttribute("msg", "未查询到相关房间信息！");
                 return "roomQuery";
