@@ -146,10 +146,10 @@
                                                             <div class="row center">
                                                                 消费时间：
                                                                 <i class="icon-time"></i>
-                                                                <fmt:formatDate pattern="yyyy-MM-dd hh:mm"
+                                                                <fmt:formatDate pattern="yyyy-MM-dd HH:mm"
                                                                                 value="${room.startTime}"/> ~
                                                                 <i class="icon-time"></i>
-                                                                <fmt:formatDate pattern="yyyy-MM-dd hh:mm"
+                                                                <fmt:formatDate pattern="yyyy-MM-dd HH:mm"
                                                                                 value="${room.endTime}"/>
                                                             </div>
                                                         </div>
