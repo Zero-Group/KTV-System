@@ -167,7 +167,7 @@
                                                         </c:otherwise>
                                                     </c:choose>
                                                 </div>
-                                                <div class="col-xs-12 col-sm-45"></div>
+                                                <div class="col-xs-12 col-sm-4"></div>
                                             </div>
 
                                             <div class="step-pane" id="step2">

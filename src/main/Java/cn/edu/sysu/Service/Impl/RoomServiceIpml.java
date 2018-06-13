@@ -85,6 +85,7 @@ public class RoomServiceIpml implements RoomService {
     }
 
     @Override
+    @Transactional
     public OperationStatus checkoutRoom(int id, String type) throws KTVException {
         try {
             if (roomDao.queryRoom(id, type) == null) {
@@ -101,6 +102,7 @@ public class RoomServiceIpml implements RoomService {
     }
 
     @Override
+    @Transactional
     public OperationStatus renewRoom(int id, String type, int hours) throws KTVException {
         try {
             if (roomDao.queryRoom(id, type) == null) {

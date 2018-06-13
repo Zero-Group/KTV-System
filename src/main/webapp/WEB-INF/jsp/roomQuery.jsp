@@ -83,6 +83,10 @@
                         <i class="icon-home home-icon"></i>
                         <a href="<c:url value="/ktv"/>">主页</a>
                     </li>
+                    <li>
+                        <a href="<c:url value="/room"/>">房间管理</a>
+                    </li>
+                    <li class="active">查询房间</li>
                 </ul><!-- .breadcrumb -->
             </div>
 
