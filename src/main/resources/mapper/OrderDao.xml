@@ -53,4 +53,10 @@
         WHERE id = #{id} AND pay = 0
     </update>
 
+    <update id="updateDetail">
+        UPDATE tb_order
+        SET detail = #{newdetail}, price = #{newprice}
+        WHERE id = #{id} AND pay = 0
+    </update>
+
 </mapper>

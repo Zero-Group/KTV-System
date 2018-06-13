@@ -106,4 +106,9 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Override
+    public void updateDetail(int id, String newDetail, double newPrice) {
+        orderDao.updateDetail(id, newDetail, newPrice);
+    }
+
 }

@@ -80,4 +80,12 @@ public interface OrderService {
      */
     OperationStatus payOrder(int id);
 
+    /**
+     * 在房间续费和消费的时候更新订单详情
+     *
+     * @param id        订单编号
+     * @param newDetail 新的订单详情
+     * @param newPrice  新的订单价格
+     */
+    void updateDetail(int id, String newDetail, double newPrice);
 }
