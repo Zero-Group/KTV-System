@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.sysu.Dao.VIPDao">
+
+    <insert id="addVIP" parameterType="VIP" useGeneratedKeys="true">
+        INSERT
+        INTO tb_vip
+        (id, cname, phone)
+        VALUES (#{id}, #{cname}, #{phone})
+    </insert>
+
+    <delete id="deleteVIP" parameterType="string">
+        DELETE
+        FROM tb_vip
+        WHERE cname = #{cname};
+    </delete>
+
+    <select id="queryAllVIP" resultType="VIP">
+        SELECT *
+        FROM tb_vip
+    </select>
+
+    <select id="queryVIPById" resultType="VIP" parameterType="int">
+        SELECT *
+        FROM tb_vip
+        WHERE id = #{id}
+    </select>
+
+    <select id="queryVIPByName" resultType="VIP" parameterType="string">
+        SELECT *
+        FROM tb_vip
+        WHERE cname = #{cname}
+    </select>
+
+    <select id="queryVIPByPhone" resultType="VIP" parameterType="string">
+        SELECT *
+        FROM tb_vip
+        WHERE phone = #{phone}
+    </select>
+
+    <update id="changeName">
+        UPDATE tb_vip
+        SET cname = #{cname}
+        WHERE id = #{id}
+    </update>
+
+</mapper>

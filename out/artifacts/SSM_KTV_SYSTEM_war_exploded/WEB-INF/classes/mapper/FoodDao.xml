@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.sysu.Dao.FoodDao">
+
+    <insert id="addFood" parameterType="Food" useGeneratedKeys="true">
+        INSERT
+        INTO tb_food
+        (id, fname, price, stock)
+        VALUES (#{id}, #{fname}, #{price}, #{stock})
+    </insert>
+
+    <delete id="deleteFood" parameterType="string">
+        DELETE
+        FROM tb_food
+        WHERE fname = #{fname}
+    </delete>
+
+    <update id="increaseStock">
+        UPDATE tb_food
+        SET stock = stock + #{number}
+        WHERE fname = #{fname};
+    </update>
+
+    <update id="reduceStock">
+        UPDATE tb_food
+        SET stock = stock - #{number}
+        WHERE fname = #{fname}
+              AND stock >= #{number};
+    </update>
+
+    <update id="changePrice">
+        UPDATE tb_food
+        SET price = #{price}
+        WHERE fname = #{fname}
+    </update>
+
+    <select id="queryAllFood" resultType="Food">
+        SELECT *
+        FROM tb_food
+    </select>
+
+    <select id="queryFoodById" parameterType="int" resultType="Food">
+        SELECT *
+        FROM tb_food
+        WHERE id = #{id}
+    </select>
+
+    <select id="queryFoodByFName" parameterType="string" resultType="Food">
+        SELECT *
+        FROM tb_food
+        WHERE fname = #{fname}
+    </select>
+
+</mapper>

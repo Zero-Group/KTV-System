@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.sysu.Dao.OrderDao">
+
+    <insert id="addOrder" parameterType="Order" useGeneratedKeys="true">
+        INSERT
+        INTO tb_order
+        (id, room, ordertime, cname, phone, price, pay, detail)
+        VALUES (#{id}, #{room}, #{orderTime}, #{cname}, #{phone}, #{price}, #{pay}, #{detail})
+    </insert>
+
+    <delete id="deleteOrder">
+        DELETE
+        FROM tb_order
+        WHERE id = #{id}
+    </delete>
+
+    <select id="queryAllOrder" resultType="Order">
+        SELECT *
+        FROM tb_order
+    </select>
+
+    <select id="queryOrderById" resultType="Order" parameterType="int">
+        SELECT *
+        FROM tb_order
+        WHERE id = #{id}
+    </select>
+
+    <select id="queryOrder" resultType="Order">
+        SELECT *
+        FROM tb_order
+        WHERE room = #{room} AND ordertime = #{orderTime}
+    </select>
+
+    <select id="queryOrderByVIP" resultType="Order" parameterType="String">
+        SELECT *
+        FROM tb_order
+        WHERE cname = #{cname}
+    </select>
+
+    <select id="queryOrderByPay" resultType="Order" parameterType="int">
+        SELECT *
+        FROM tb_order
+        WHERE pay = #{pay}
+    </select>
+
+    <update id="payOrder">
+        UPDATE tb_order
+        SET pay = 1
+        WHERE id = #{id} AND pay = 0
+    </update>
+
+    <update id="updateDetail">
+        UPDATE tb_order
+        SET detail = #{newdetail}, price = #{newprice}
+        WHERE id = #{id} AND pay = 0
+    </update>
+
+</mapper>

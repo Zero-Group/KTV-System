@@ -74,6 +74,7 @@ public class ConsumeController {
         String newDetail = mapper.writeValueAsString(listDetail);
         double newPrice = Double.parseDouble(totalPrice) + order.getPrice();
         try {
+            addDetail.forEach(orderDetail -> foodService.reduceStock(orderDetail.getName(), orderDetail.getNumber()));
             orderService.updateDetail(Integer.parseInt(oid), newDetail, newPrice);
         } catch (KTVException e) {
             return null;

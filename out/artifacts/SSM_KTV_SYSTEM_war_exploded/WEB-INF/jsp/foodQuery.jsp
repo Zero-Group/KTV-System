@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
-  User: lixinheng
-  Date: 2018/5/15
-  Time: 14:35
+  User: lijinzhu
+  Date: 2018/5/14
+  Time: 22:44
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="common/tag.jsp" %>
 <html>
 <head>
-    <title>订单管理</title>
+    <title>食物查询</title>
     <%@include file="common/head.jsp" %>
 </head>
 <body>
@@ -50,36 +50,42 @@
                     </a>
 
                     <ul class="submenu">
-                        <li>
-                            <a href="<c:url value="/account/food"/>">
+                        <li class="active">
+                            <a href="<c:url value="/account/food"/>" class="dropdown-toggle">
                                 <i class="icon-food"></i>
                                 食物管理
-                                <b class="arrow icon-angle-down"></b>
-                            </a>
-                        </li>
-
-                        <li class="active">
-                            <a href="<c:url value="/account/order"/>" class="dropdown-toggle">
-                                <i class="icon-money"></i>
-                                订单管理
                                 <b class="arrow icon-angle-down"></b>
                             </a>
 
                             <ul class="submenu">
                                 <li>
-                                    <a href="<c:url value="/account/order/all"/>">
+                                    <a href="<c:url value="/account/food/all"/>">
                                         <i class="icon-list-ul"></i>
-                                        所有订单
+                                        所有食物
                                     </a>
                                 </li>
 
-                                <li>
-                                    <a href="<c:url value="/account/order/query"/>">
+                                <li class="active">
+                                    <a href="<c:url value="/account/food/query"/>" class="dropdown-toggle">
                                         <i class="icon-search"></i>
-                                        查询订单
+                                        查询食物
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<c:url value="/account/food/add"/>" class="dropdown-toggle">
+                                        <i class="icon-plus"></i>
+                                        新增食物
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+
+                        <li>
+                            <a href="<c:url value="/account/order"/>">
+                                <i class="icon-money"></i>
+                                订单管理
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -97,7 +103,10 @@
                     <li>
                         <a href="<c:url value="/account"/>">账目管理</a>
                     </li>
-                    <li class="active">订单管理</li>
+                    <li>
+                        <a href="<c:url value="/account/food"/>">食物管理</a>
+                    </li>
+                    <li class="active">查询食物</li>
                 </ul><!-- .breadcrumb -->
             </div>
 
@@ -106,7 +115,53 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
+                        <div class="row">
+                            <div class="col-xs-12 center">
+                                <div class="well-lg blue">
+                                    <h1>查询食物</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4"></div>
+                            <div class="col-xs-12 col-sm-4">
+                                <div class="alert alert-info">
+                                    <strong>提示：</strong><br>
+                                    输入食物名称即可查询该食物的相关信息
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4"></div>
+                            <div class="col-xs-12 col-sm-4">
+                                <form class="form-search" action="<c:url value="/account/food/query"/>" method="post">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="input-group">
+                                                <input type="text" name="key" class="form-control search-query"
+                                                       placeholder="请按照提示输入..."/>
+                                                <span class="input-group-btn">
+                                                    <button type="submit" class="btn btn-info btn-sm">
+                                                        搜索
+                                                        <i class="icon-search icon-on-right bigger-110"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-xs-12 col-sm-4"></div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col-xs-12 center">
+                                <div class="center red">
+                                    ${msg}
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->

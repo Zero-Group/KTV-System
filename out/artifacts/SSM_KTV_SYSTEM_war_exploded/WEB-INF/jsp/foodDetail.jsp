@@ -1,0 +1,413 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: lijinzhu
+  Date: 2018/5/14
+  Time: 22:44
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@include file="common/tag.jsp" %>
+<html>
+<head>
+    <title>食物详情</title>
+    <%@include file="common/head.jsp" %>
+</head>
+<body>
+<!-- 页面显示 -->
+<%@include file="common/navbar.jsp" %>
+
+<div class="main-container" id="main-container">
+
+    <div class="main-container-inner">
+
+        <div class="sidebar" id="sidebar">
+
+            <ul class="nav nav-list">
+                <li>
+                    <a href="<c:url value="/room"/>">
+                        <i class="icon-home"></i>
+                        <span class="menu-text">房间管理</span>
+
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<c:url value="/vip"/>">
+                        <i class="icon-user"></i>
+                        <span class="menu-text">会员管理</span>
+
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="<c:url value="/account"/>" class="dropdown-toggle">
+                        <i class="icon-bar-chart"></i>
+                        <span class="menu-text">账目管理</span>
+
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="active">
+                            <a href="<c:url value="/account/food"/>" class="dropdown-toggle">
+                                <i class="icon-food"></i>
+                                食物管理
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li>
+                                    <a href="<c:url value="/account/food/all"/>">
+                                        <i class="icon-list-ul"></i>
+                                        所有食物
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="<c:url value="/account/food/query"/>" class="dropdown-toggle">
+                                        <i class="icon-search"></i>
+                                        查询食物
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<c:url value="/account/food/add"/>" class="dropdown-toggle">
+                                        <i class="icon-plus"></i>
+                                        新增食物
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="<c:url value="/account/order"/>">
+                                <i class="icon-money"></i>
+                                订单管理
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul><!-- /.nav-list -->
+
+        </div>
+
+        <div class="main-content">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                        <a href="<c:url value="/ktv"/>">主页</a>
+                    </li>
+                    <li>
+                        <a href="<c:url value="/account"/>">账目管理</a>
+                    </li>
+                    <li>
+                        <a href="<c:url value="/account/food"/>">食物管理</a>
+                    </li>
+                    <li class="active">${title}</li>
+                </ul><!-- .breadcrumb -->
+            </div>
+
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+
+                        <div class="row">
+                            <div class="col-xs-12 center">
+                                <div class="well-lg blue">
+                                    <h1>食物详情</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4"></div>
+                            <div class="col-xs-12 col-sm-4">
+                                <form id="form1" action="<c:url value="/account/food/delete"/>" method="post">
+                                    <table class="table table-bordered table-hover">
+                                        <tbody>
+                                        <tr>
+                                            <td>食物名称</td>
+                                            <td colspan="2">${food.fname}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>食物价格</td>
+                                            <td>${food.price}</td>
+                                            <td class="center">
+                                                <a href="#modal1" data-toggle="modal">
+                                                    <button class="btn btn-xs btn-primary">修改价格</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>食物库存</td>
+                                            <td>${food.stock}</td>
+                                            <td class="center">
+                                                <a href="#modal2" data-toggle="modal">
+                                                    <button class="btn btn-xs btn-primary">增加库存</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="center">
+                                            <td colspan="3">
+                                                <input type="hidden" name="fname" value="${food.fname}">
+                                                <button id="del" type="button" class="btn btn-xs btn-danger">删除食物
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                            <div class="col-xs-12 col-sm-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4"></div>
+                            <div class="col-xs-12 col-sm-4">
+                                <c:choose>
+                                    <c:when test="${msg == null}">
+                                    </c:when>
+                                    <c:when test="${succeed == true}">
+                                        <div class="alert alert-block alert-success">
+                                            <button type="button" class="close"
+                                                    data-dismiss="alert">
+                                                <i class="icon-remove"></i>
+                                            </button>
+                                            <p><i class="icon-ok"></i>&nbsp;&nbsp;${msg}</p>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="alert alert-block alert-danger">
+                                            <button type="button" class="close"
+                                                    data-dismiss="alert">
+                                                <i class="icon-remove"></i>
+                                            </button>
+                                            <p><i class="icon-bug"></i>&nbsp;&nbsp;${msg}</p>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div class="col-xs-12 col-sm-4"></div>
+                        </div>
+
+                        <div id="modal1" class="modal fade">
+                            <div class="modal-dialog">
+                                <form action="<c:url value="/account/food/changeprice"/>" method="post"
+                                      class="form-horizontal" id="validation-form">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="center">输入新价格</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3 class="lighter block blue center">输入新的食物价格</h3>
+                                            <div class="form-group">
+                                                <div class="col-xs-12 col-sm-4"></div>
+                                                <div class="col-xs-12 col-sm-4">
+                                                    <div class="clearfix">
+                                                        <input type="hidden" name="fname" value="${food.fname}"/>
+                                                        <input type="text" name="newprice" id="newprice"
+                                                               class="width-100"
+                                                               placeholder="(0 ~ 500)" title=""/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-4"></div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                确定
+                                                <i class="icon-ok"></i>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm pull-left" data-dismiss="modal">
+                                                <i class="icon-remove"></i>
+                                                取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div id="modal2" class="modal fade">
+                            <div class="modal-dialog">
+                                <form action="<c:url value="/account/food/increase"/>" method="post"
+                                      class="form-horizontal" id="validation-form2">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="center">输入增加数量</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3 class="lighter block blue center">输入增加的食物库存量</h3>
+                                            <div class="form-group">
+                                                <div class="col-xs-12 col-sm-4"></div>
+                                                <div class="col-xs-12 col-sm-4">
+                                                    <div class="clearfix">
+                                                        <input type="hidden" name="fname" value="${food.fname}"/>
+                                                        <input type="text" name="increase" id="increase"
+                                                               class="width-100"
+                                                               placeholder="(1 ~ 1000)" title=""/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-4"></div>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                确定
+                                                <i class="icon-ok"></i>
+                                            </button>
+
+                                            <button class="btn btn-danger btn-sm pull-left" data-dismiss="modal">
+                                                <i class="icon-remove"></i>
+                                                取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+    </div><!-- /.main-container-inner -->
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+</body>
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script src="https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='https://cdn.bootcss.com/jquery/2.0.3/jquery.min.js'>" + "<" + "/script>");
+</script>
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js'>" + "<" + "/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="<c:url value="/assets/js/typeahead-bs2.min.js"/>"></script>
+
+<!-- page specific plugin scripts -->
+<script src="<c:url value="/assets/js/fuelux/fuelux.wizard.min.js"/>"></script>
+<script src="<c:url value="/assets/js/jquery.validate.min.js"/>"></script>
+<script src="<c:url value="/assets/js/additional-methods.min.js"/>"></script>
+<script src="<c:url value="/assets/js/bootbox.min.js"/>"></script>
+
+<!-- ace scripts -->
+<script src="<c:url value="/assets/js/ace-elements.min.js"/>"></script>
+<script src="<c:url value="/assets/js/ace.min.js"/>"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("#del").on("click", function () {
+            bootbox.confirm({
+                size: "small",
+                message: "<h4>确认删除食物 “${food.fname}” 吗?</h4>",
+                buttons: {
+                    confirm: {
+                        label: '确定',
+                        className: 'btn-sm btn-success'
+                    },
+                    cancel: {
+                        label: '取消',
+                        className: 'btn-sm btn-danger'
+                    }
+                },
+                /* result is a boolean; true = OK, false = Cancel*/
+                callback: function (result) {
+                    if (result) {
+                        $("#form1").submit();
+                    }
+                }
+            });
+        });
+    });
+
+    jQuery(function ($) {
+
+        $('#validation-form').validate({
+            errorElement: 'div',
+            errorClass: 'help-block',
+            focusInvalid: false,
+            rules: {
+                newprice: {
+                    required: true,
+                    number: true,
+                    range: [0, 500]
+                }
+            },
+
+            messages: {
+                newprice: "请输入新的食物价格！"
+            },
+
+            highlight: function (e) {
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            },
+
+            success: function (e) {
+                $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+                $(e).remove();
+            }
+        });
+
+        $('#validation-form2').validate({
+            errorElement: 'div',
+            errorClass: 'help-block',
+            focusInvalid: false,
+            rules: {
+                increase: {
+                    required: true,
+                    digits: true,
+                    range: [1, 1000]
+                }
+            },
+
+            messages: {
+                increase: "请输入增加的库存量！(1 ~ 1000)"
+            },
+
+            highlight: function (e) {
+                $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+            },
+
+            success: function (e) {
+                $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+                $(e).remove();
+            }
+        });
+
+        $('#modal1 #modal2 .modal-header').ace_wizard();
+        $('#modal1 #modal2 .wizard-actions .btn[data-dismiss=modal]').removeAttr('disabled');
+    })
+
+</script>
+
+</html>

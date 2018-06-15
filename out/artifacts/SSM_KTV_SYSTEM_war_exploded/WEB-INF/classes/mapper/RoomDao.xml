@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.sysu.Dao.RoomDao">
+
+    <insert id="addRoom" parameterType="Room" useGeneratedKeys="true">
+        INSERT
+        INTO tb_room
+        (id, type, price, status, start_time, end_time)
+        VALUES (#{id}, #{type}, #{price}, #{status}, #{startTime}, #{endTime})
+    </insert>
+
+    <delete id="deleteRoom">
+        DELETE
+        FROM tb_room
+        WHERE id = #{id} AND type = #{type};
+    </delete>
+
+    <update id="bookingRoom">
+        UPDATE tb_room
+        SET status = 1, start_time = #{startTime}, end_time = DATE_ADD(#{startTime}, INTERVAL #{hours} HOUR)
+        WHERE id = #{id} AND type = #{type}
+    </update>
+
+    <update id="checkoutRoom">
+        UPDATE tb_room
+        SET status = 0, start_time = NULL, end_time = NULL
+        WHERE id = #{id} AND type = #{type}
+    </update>
+
+    <update id="renewRoom">
+        UPDATE tb_room
+        SET end_time = DATE_ADD(end_time, INTERVAL #{hours} HOUR)
+        WHERE id = #{id} AND type = #{type}
+    </update>
+
+    <select id="queryRoom" resultType="Room">
+        SELECT *
+        FROM tb_room
+        WHERE id = #{id} AND type = #{type}
+    </select>
+
+    <select id="queryAllRoom" resultType="Room">
+        SELECT *
+        FROM tb_room
+    </select>
+
+    <select id="queryEmptyRoom" resultType="Room">
+        SELECT *
+        FROM tb_room
+        WHERE status = 0
+    </select>
+
+    <select id="queryEmptyRoomByType" resultType="Room" parameterType="string">
+        SELECT *
+        FROM tb_room
+        WHERE type = #{type} AND status = 0
+    </select>
+
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 配置SpringMVC -->
+
+    <!-- Configures the annotation-driven Spring MVC Controller programming
+    model. Note that this tag works in Web MVC only, not in Portlet MVC! -->
+    <mvc:annotation-driven/>
+
+    <!-- Configures a handler for serving static resources by forwarding
+    to the Servlet container's default Servlet.  Use of this handler
+    allows using a "/" mapping with the DispatcherServlet while still
+    utilizing the Servlet container to serve static resources. -->
+    <mvc:default-servlet-handler/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <context:component-scan base-package="cn.edu.sysu.Web"/>
+
+</beans>

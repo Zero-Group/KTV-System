@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
-  User: lixinheng
-  Date: 2018/5/15
-  Time: 14:35
+  User: fndnh
+  Date: 2018/5/10
+  Time: 20:12
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="common/tag.jsp" %>
 <html>
 <head>
-    <title>订单管理</title>
+    <title>会员管理</title>
     <%@include file="common/head.jsp" %>
 </head>
 <body>
@@ -32,56 +32,45 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="<c:url value="/vip"/>">
+                <li class="active">
+                    <a href="<c:url value="/vip"/>" class="dropdown-toggle">
                         <i class="icon-user"></i>
                         <span class="menu-text">会员管理</span>
-
-                        <b class="arrow icon-angle-down"></b>
-                    </a>
-                </li>
-
-                <li class="active">
-                    <a href="<c:url value="/account"/>" class="dropdown-toggle">
-                        <i class="icon-bar-chart"></i>
-                        <span class="menu-text">账目管理</span>
 
                         <b class="arrow icon-angle-down"></b>
                     </a>
 
                     <ul class="submenu">
                         <li>
-                            <a href="<c:url value="/account/food"/>">
-                                <i class="icon-food"></i>
-                                食物管理
-                                <b class="arrow icon-angle-down"></b>
+                            <a href="<c:url value="/vip/all"/>">
+                                <i class="icon-list-ul"></i>
+                                所有会员
                             </a>
                         </li>
 
-                        <li class="active">
-                            <a href="<c:url value="/account/order"/>" class="dropdown-toggle">
-                                <i class="icon-money"></i>
-                                订单管理
-                                <b class="arrow icon-angle-down"></b>
+                        <li>
+                            <a href="<c:url value="/vip/query"/>">
+                                <i class="icon-search"></i>
+                                查询会员
                             </a>
+                        </li>
 
-                            <ul class="submenu">
-                                <li>
-                                    <a href="<c:url value="/account/order/all"/>">
-                                        <i class="icon-list-ul"></i>
-                                        所有订单
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="<c:url value="/account/order/query"/>">
-                                        <i class="icon-search"></i>
-                                        查询订单
-                                    </a>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="<c:url value="/vip/add"/>">
+                                <i class="icon-plus"></i>
+                                新增会员
+                            </a>
                         </li>
                     </ul>
+                </li>
+
+                <li>
+                    <a href="<c:url value="/account"/>">
+                        <i class="icon-bar-chart"></i>
+                        <span class="menu-text">账目管理</span>
+
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
                 </li>
             </ul><!-- /.nav-list -->
 
@@ -94,10 +83,7 @@
                         <i class="icon-home home-icon"></i>
                         <a href="<c:url value="/ktv"/>">主页</a>
                     </li>
-                    <li>
-                        <a href="<c:url value="/account"/>">账目管理</a>
-                    </li>
-                    <li class="active">订单管理</li>
+                    <li class="active">会员管理</li>
                 </ul><!-- .breadcrumb -->
             </div>
 
@@ -106,7 +92,49 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
+                        <div class="col-sm-6">
+                            <h1>会员管理系统</h1>
+                            <div class="row">
+                                <div class="col-xs-10 label label-lg label-success arrowed-in arrowed-right">
+                                    <b>会员系统注意事项</b>
+                                </div>
+                            </div>
 
+                            <div>
+                                <ul class="list-unstyled  spaced">
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        会员注册必须包括姓名和手机号
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        会员可以通过手机号或者姓名最直接查询
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        会员注册姓名不得重复，如有重复请在最后添加序号加以区分，与手机号一一绑定
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        会员手机号应是11位。
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        会员注册后信息不能修改，如需修改应该删除该账号重新注册
+                                    </li>
+
+                                    <li class="divider"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <canvas id="canvas" width="500" height="500"></canvas>
+                            <script src="<c:url value="/assets/js/clock.js"/>"></script>
+                        </div>
 
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->

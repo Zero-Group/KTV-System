@@ -1,20 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
   User: lixinheng
-  Date: 2018/5/15
-  Time: 14:35
+  Date: 2018/5/14
+  Time: 22:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="common/tag.jsp" %>
 <html>
 <head>
-    <title>订单管理</title>
+    <title>订单列表</title>
     <%@include file="common/head.jsp" %>
 </head>
 <body>
 <!-- 页面显示 -->
-<%@include file="common/navbar.jsp" %>
+<%@include file="common/navbar.jsp"%>
 
 <div class="main-container" id="main-container">
 
@@ -97,7 +97,10 @@
                     <li>
                         <a href="<c:url value="/account"/>">账目管理</a>
                     </li>
-                    <li class="active">订单管理</li>
+                    <li>
+                        <a href="<c:url value="/account/order"/>">订单管理</a>
+                    </li>
+                    <li class="active">${title}</li>
                 </ul><!-- .breadcrumb -->
             </div>
 
@@ -106,7 +109,39 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
+                        <c:forEach var="i" begin="1" end="${rows}">
+                            <div class="row">
+                                <c:forEach items="${list}" var="order" begin="${6*(i-1)}" end="${6*(i-1)+5}">
+                                    <div class="col-xs-12 col-sm-2 widget-container-span ui-sortable">
+                                        <a href="/account/order/id=${order.id}/detail" style="text-decoration: none;">
+                                            <div class="widget-box" style="opacity: 1;">
+                                                <div class="widget-header">
+                                                    <h4 class="grey">订单${order.id}</h4>
 
+                                                    <div class="widget-toolbar">
+                                                        <c:choose>
+                                                            <c:when test="${order.pay == 0}">
+                                                                <span class="label label-danger">未支付</span>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <span class="label label-success">已支付</span>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
+                                                </div>
+
+                                                <div class="widget-body">
+                                                    <div class="widget-main padding-2">
+                                                        <div class="alert alert-info">顾客：${order.cname}<br>消费金额：<br>${order.price}<br></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                            <br>
+                        </c:forEach>
 
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->

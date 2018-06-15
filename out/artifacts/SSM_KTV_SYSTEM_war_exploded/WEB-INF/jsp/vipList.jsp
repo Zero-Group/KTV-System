@@ -1,20 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
-  User: lixinheng
-  Date: 2018/5/15
-  Time: 14:35
+  User: fndnh
+  Date: 2018/5/10
+  Time: 19:25
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="common/tag.jsp" %>
 <html>
 <head>
-    <title>订单管理</title>
+    <title>会员列表</title>
     <%@include file="common/head.jsp" %>
 </head>
 <body>
 <!-- 页面显示 -->
-<%@include file="common/navbar.jsp" %>
+<%@include file="common/navbar.jsp"%>
 
 <div class="main-container" id="main-container">
 
@@ -32,56 +32,45 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="<c:url value="/vip"/>">
+                <li class="active">
+                    <a href="<c:url value="/vip"/>" class="dropdown-toggle">
                         <i class="icon-user"></i>
                         <span class="menu-text">会员管理</span>
-
-                        <b class="arrow icon-angle-down"></b>
-                    </a>
-                </li>
-
-                <li class="active">
-                    <a href="<c:url value="/account"/>" class="dropdown-toggle">
-                        <i class="icon-bar-chart"></i>
-                        <span class="menu-text">账目管理</span>
 
                         <b class="arrow icon-angle-down"></b>
                     </a>
 
                     <ul class="submenu">
                         <li>
-                            <a href="<c:url value="/account/food"/>">
-                                <i class="icon-food"></i>
-                                食物管理
-                                <b class="arrow icon-angle-down"></b>
+                            <a href="<c:url value="/vip/all"/>">
+                                <i class="icon-list-ul"></i>
+                                所有会员
                             </a>
                         </li>
 
-                        <li class="active">
-                            <a href="<c:url value="/account/order"/>" class="dropdown-toggle">
-                                <i class="icon-money"></i>
-                                订单管理
-                                <b class="arrow icon-angle-down"></b>
+                        <li>
+                            <a href="<c:url value="/vip/query"/>">
+                                <i class="icon-search"></i>
+                                查询会员
                             </a>
+                        </li>
 
-                            <ul class="submenu">
-                                <li>
-                                    <a href="<c:url value="/account/order/all"/>">
-                                        <i class="icon-list-ul"></i>
-                                        所有订单
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="<c:url value="/account/order/query"/>">
-                                        <i class="icon-search"></i>
-                                        查询订单
-                                    </a>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="<c:url value="/vip/add"/>">
+                                <i class="icon-plus"></i>
+                                新增会员
+                            </a>
                         </li>
                     </ul>
+                </li>
+
+                <li>
+                    <a href="<c:url value="/account"/>">
+                        <i class="icon-bar-chart"></i>
+                        <span class="menu-text">账目管理</span>
+
+                        <b class="arrow icon-angle-down"></b>
+                    </a>
                 </li>
             </ul><!-- /.nav-list -->
 
@@ -95,9 +84,9 @@
                         <a href="<c:url value="/ktv"/>">主页</a>
                     </li>
                     <li>
-                        <a href="<c:url value="/account"/>">账目管理</a>
+                        <a href="<c:url value="/vip"/>">会员管理</a>
                     </li>
-                    <li class="active">订单管理</li>
+                    <li class="active">${title}</li>
                 </ul><!-- .breadcrumb -->
             </div>
 
@@ -106,7 +95,33 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
+                        <c:forEach var="i" begin="1" end="${rows}">
+                            <div class="row">
+                                <c:forEach items="${list}" var="vip" begin="${6*(i-1)}" end="${6*(i-1)+5}">
+                                    <div class="col-xs-12 col-sm-2 widget-container-span ui-sortable">
+                                        <a href="/vip/id=${vip.id}/detail" style="text-decoration: none;">
+                                            <div class="widget-box" style="opacity: 1;">
+                                                <div class="widget-header">
+                                                    <h4 class="grey">${vip.cname}</h4>
 
+                                                    <div class="widget-toolbar">
+                                                        <span class="label label-warning">VIP</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="widget-body">
+                                                    <div class="widget-main padding-2">
+                                                        <div class="alert alert-info">电话号码：<br>${vip.phone}<br><br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                            <br>
+                        </c:forEach>
 
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->

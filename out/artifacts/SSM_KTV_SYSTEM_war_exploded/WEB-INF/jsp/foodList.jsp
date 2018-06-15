@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
-  User: lixinheng
-  Date: 2018/5/15
-  Time: 14:35
+  User: lijinzhu
+  Date: 2018/5/14
+  Time: 22:44
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@include file="common/tag.jsp" %>
 <html>
 <head>
-    <title>订单管理</title>
+    <title>食物列表</title>
     <%@include file="common/head.jsp" %>
 </head>
 <body>
@@ -50,36 +50,42 @@
                     </a>
 
                     <ul class="submenu">
-                        <li>
-                            <a href="<c:url value="/account/food"/>">
+                        <li class="active">
+                            <a href="<c:url value="/account/food"/>" class="dropdown-toggle">
                                 <i class="icon-food"></i>
                                 食物管理
-                                <b class="arrow icon-angle-down"></b>
-                            </a>
-                        </li>
-
-                        <li class="active">
-                            <a href="<c:url value="/account/order"/>" class="dropdown-toggle">
-                                <i class="icon-money"></i>
-                                订单管理
                                 <b class="arrow icon-angle-down"></b>
                             </a>
 
                             <ul class="submenu">
                                 <li>
-                                    <a href="<c:url value="/account/order/all"/>">
+                                    <a href="<c:url value="/account/food/all"/>">
                                         <i class="icon-list-ul"></i>
-                                        所有订单
+                                        所有食物
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="<c:url value="/account/order/query"/>">
+                                    <a href="<c:url value="/account/food/query"/>" class="dropdown-toggle">
                                         <i class="icon-search"></i>
-                                        查询订单
+                                        查询食物
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<c:url value="/account/food/add"/>" class="dropdown-toggle">
+                                        <i class="icon-plus"></i>
+                                        新增食物
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+
+                        <li>
+                            <a href="<c:url value="/account/order"/>">
+                                <i class="icon-money"></i>
+                                订单管理
+                                <b class="arrow icon-angle-down"></b>
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -97,7 +103,10 @@
                     <li>
                         <a href="<c:url value="/account"/>">账目管理</a>
                     </li>
-                    <li class="active">订单管理</li>
+                    <li>
+                        <a href="<c:url value="/account/food"/>">食物管理</a>
+                    </li>
+                    <li class="active">${title}</li>
                 </ul><!-- .breadcrumb -->
             </div>
 
@@ -106,7 +115,33 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
+                        <c:forEach var="i" begin="1" end="${rows}">
+                            <div class="row">
+                                <c:forEach items="${list}" var="food" begin="${6*(i-1)}" end="${6*(i-1)+5}">
+                                    <div class="col-xs-12 col-sm-2 widget-container-span ui-sortable">
+                                        <a href="/account/food/id=${food.id}/detail" style="text-decoration: none;">
+                                            <div class="widget-box" style="opacity: 1;">
+                                                <div class="widget-header">
+                                                    <h4 class="grey">${food.fname}</h4>
 
+                                                    <div class="widget-toolbar">
+                                                        <span class="label label-info">${food.stock}份</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="widget-body">
+                                                    <div class="widget-main padding-2">
+                                                        <div class="alert alert-info">价格：<br>${food.price}元/份<br><br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                            <br>
+                        </c:forEach>
 
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
