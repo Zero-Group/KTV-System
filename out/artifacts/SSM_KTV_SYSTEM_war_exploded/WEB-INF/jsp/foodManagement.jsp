@@ -112,7 +112,39 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
+                        <div class="col-sm-6">
+                            <h1>食物管理系统</h1>
+                            <div class="row">
+                                <div class="col-xs-10 label label-lg label-success arrowed-in arrowed-right">
+                                    <b>食物系统注意事项</b>
+                                </div>
+                            </div>
 
+                            <div>
+                                <ul class="list-unstyled  spaced">
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        新增食物必须输入食物名称、食物价格以及食物数量
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        查询食物仅可通过食物名称来查询
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        食物名称不可以重复
+                                    </li>
+
+                                    <li class="divider"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <canvas id="canvas" width="500" height="500"></canvas>
+                            <script src="<c:url value="/assets/js/clock.js"/>"></script>
+                        </div>
 
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->

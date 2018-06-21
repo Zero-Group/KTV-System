@@ -106,7 +106,38 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
+                        <div class="col-sm-6">
+                            <h1>订单管理系统</h1>
+                            <div class="row">
+                                <div class="col-xs-10 label label-lg label-success arrowed-in arrowed-right">
+                                    <b>订单系统注意事项</b>
+                                </div>
+                            </div>
 
+                            <div>
+                                <ul class="list-unstyled  spaced">
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        订单无需管理员手动添加，在订房时会自动生成订单信息
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        用户点餐消费或者续订房间也会自动更新订单信息
+                                    </li>
+
+                                    <li>
+                                        <i class="icon-caret-right green"></i>
+                                        结束使用房间时，订单会自动变更为“已支付”状态
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <canvas id="canvas" width="500" height="500"></canvas>
+                            <script src="<c:url value="/assets/js/clock.js"/>"></script>
+                        </div>
 
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->

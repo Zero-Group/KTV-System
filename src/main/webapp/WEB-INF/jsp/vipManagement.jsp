@@ -122,11 +122,6 @@
                                         会员手机号应是11位。
                                     </li>
 
-                                    <li>
-                                        <i class="icon-caret-right green"></i>
-                                        会员注册后信息不能修改，如需修改应该删除该账号重新注册
-                                    </li>
-
                                     <li class="divider"></li>
                                 </ul>
                             </div>
